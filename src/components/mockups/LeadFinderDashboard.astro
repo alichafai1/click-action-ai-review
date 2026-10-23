@@ -1,0 +1,35 @@
+---
+const rows = [
+  { name: 'Miami Smile Studio', phone: '(305) 555-0142', site: 'miamismile.example' },
+  { name: 'Brickell Family Dental', phone: '(305) 555-0188', site: 'brickelldental.example' },
+  { name: 'Coral Gables Dentistry', phone: '(305) 555-0116', site: 'coralgables.example' },
+  { name: 'Wynwood Dental Co.', phone: '(305) 555-0190', site: 'wynwooddental.example' },
+];
+---
+
+<figure class="mock">
+  <figcaption class="mock-top">
+    <span class="mock-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span>Lead Finder</span>
+    <span class="mock-tag">4 selected</span>
+  </figcaption>
+  <div class="mock-screen finder-dashboard">
+    <div class="finder-search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="1.8" aria-hidden="true">
+        <circle cx="11" cy="11" r="6" />
+        <path d="M16 16l4 4" />
+      </svg>
+      <span>Dentists in Miami</span>
+    </div>
+    <div class="finder-results">
+      {rows.map((row) => (
+        <div class="finder-row">
+          <span class="finder-check" aria-hidden="true"></span>
+          <strong>{row.name}</strong>
+          <small>{row.phone} · {row.site}</small>
+        </div>
+      ))}
+    </div>
+    <div class="mock-export">Export to CSV</div>
+  </div>
+</figure>

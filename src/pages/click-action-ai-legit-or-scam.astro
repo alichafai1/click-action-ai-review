@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import AffiliateCta from '../components/AffiliateCta.astro';
+import Stars from '../components/Stars.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Icon from '../components/Icon.astro';
 import RelatedReading from '../components/RelatedReading.astro';
@@ -154,10 +155,13 @@ const faqSchema = {
     <div class="container">
       <h2 id="verdict-title">Quick verdict</h2>
       <aside class="verdict" aria-label="Legit verdict">
-        <p class="rating">
-          <strong>4.7</strong>
-          <span>/5</span>
-        </p>
+        <div class="rating">
+          <p>
+            <strong>4.7</strong>
+            <span>/5</span>
+          </p>
+          <Stars value={4.7} />
+        </div>
         <div>
           <h3>Legit.</h3>
           <p>

@@ -10,36 +10,31 @@ import { affiliateUrl } from '../lib/affiliate';
 const description =
   'Is the $36.95 Click Action AI fee worth it? Compare it with a VA and web scrapers, see the funnel, the math, and the CCAI6 coupon.';
 
-const included = [
+const bundle = [
   {
     icon: 'browser',
-    title: 'Live cloud browser',
-    text: 'The front-end opens a browser in the cloud and runs the mission there. No desktop install.',
-  },
-  {
-    icon: 'eye',
-    title: 'Live Watch',
-    text: 'You see the clicks and the checklist. The run is not a spinner with a surprise file at the end.',
+    title: 'Live Browser Agent',
+    text: 'A cloud browser that clicks, types, and finishes the job while you watch.',
   },
   {
     icon: 'search',
-    title: 'Lead Finder',
-    text: 'A niche plus a city can come back as a list with the fields you asked for.',
+    title: 'Lead Finder Mode',
+    text: 'A niche and a city come back as names, phones, and websites.',
   },
   {
     icon: 'list',
     title: '50 Gig Missions',
-    text: 'Ready-made jobs for research, lists, and data entry. Reference prices on a mission are suggestions, not income.',
+    text: 'Ready-made tasks so you can pick a job instead of staring at a blank prompt.',
   },
   {
     icon: 'pause',
-    title: 'Pause and take over',
-    text: 'Logins and CAPTCHAs stop the run so you can finish that step. It does not bypass them.',
+    title: 'Pause & Take Over',
+    text: 'It stops on a login or CAPTCHA. You step in for about 5 seconds, then it resumes.',
   },
   {
     icon: 'download',
-    title: 'CSV, Sheets, or PDF',
-    text: 'The deliverable is a file you can use or hand to a client, not a chat transcript to clean by hand.',
+    title: 'CSV/Sheet Exports',
+    text: 'Download a CSV, send rows to Google Sheets, or export a PDF.',
   },
 ];
 
@@ -143,13 +138,13 @@ const faqSchema = {
 
   <section class="section" aria-labelledby="included-title">
     <div class="container">
-      <h2 id="included-title">What the $36.95 front-end includes</h2>
+      <h2 id="included-title">What You Get</h2>
       <p class="section-copy">
-        You are paying for the agent that does the browser work: a cloud browser, a screen you can watch, lead and mission tools, and an export. You are not paying for a monthly login to another chatbot.
+        One front-end. Five pieces. This is the bundle you are buying for $36.95, shown as the product itself rather than a pile of upgrades.
       </p>
-      <div class="feature-grid">
-        {included.map((item) => (
-          <article class="feature-card">
+      <div class="bundle-grid">
+        {bundle.map((item) => (
+          <article class="bundle-card">
             <div class="feature-icon">
               <Icon name={item.icon} />
             </div>

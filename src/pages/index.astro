@@ -1,14 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import AffiliateCta from '../components/AffiliateCta.astro';
+import Stars from '../components/Stars.astro';
 import PromptMockup from '../components/mockups/PromptMockup.astro';
 import BrowserMockup from '../components/mockups/BrowserMockup.astro';
 import ExportMockup from '../components/mockups/ExportMockup.astro';
 import { affiliateUrl } from '../lib/affiliate';
 
 const problems = [
-  'You ask ChatGPT for a list of leads, but you still have to copy and paste them into a spreadsheet.',
-  'You want to fill out a form on a website, but the AI can’t touch the web.',
+  'ChatGPT gives you a 7-step guide and leaves you to do the work.',
+  'You’re stuck in the copy-paste marathon: open a site, copy, switch tabs, paste, repeat 100 times.',
   'You spend hours repeating the same manual clicks every single day.',
 ];
 
@@ -39,8 +40,8 @@ const features = [
   },
   {
     title: 'Pause & Take Over',
-    text: 'For sensitive steps (like passwords or CAPTCHAs), you can take control instantly.',
-    detail: 'It stops and waits. You sign in or solve the check, then hand the browser back. It does not bypass those walls.',
+    text: 'Unlike other bots that break, it pauses when it hits a login or CAPTCHA.',
+    detail: 'You step in for about 5 seconds, then it takes back over. It does not bypass the check.',
     icon: 'pause',
   },
   {
@@ -179,23 +180,29 @@ const faqSchema = {
     <div class="container hero-copy">
       <p class="eyebrow">AI browser agent · Honest review</p>
       <h1>Click Action AI Review 2026: The AI Agent That Actually Does the Work</h1>
+      <img
+        class="hero-product"
+        src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80"
+        alt="Futuristic AI robot face rendered in neon light, suggesting an agent that works on a screen"
+        width="1200"
+        height="800"
+      />
       <p class="lede">
-        ChatGPT gives you answers. Click Action AI gives you results. It opens a live browser, clicks, types, and completes your tasks automatically. Here is my full breakdown of this game-changing AI Browser Agent.
+        No prompt engineering. Just type one sentence. The AI opens a live browser, clicks, types, and delivers a finished, client-ready file.
       </p>
-      <div class="video-stage" role="img" aria-label="Watch the AI Agent in Action">
-        <div class="play-button" aria-hidden="true"></div>
-        <p>Watch the AI Agent in Action</p>
-      </div>
       <AffiliateCta id="get">Get Click Action AI + My Bonuses →</AffiliateCta>
     </div>
   </section>
 
   <div class="container verdict-wrap" id="verdict">
     <aside class="verdict" aria-label="Quick verdict">
-      <p class="rating">
-        <strong>4.7</strong>
-        <span>/5</span>
-      </p>
+      <div class="rating">
+        <p>
+          <strong>4.7</strong>
+          <span>/5</span>
+        </p>
+        <Stars value={4.7} />
+      </div>
       <div>
         <h2>Quick verdict</h2>
         <p>Best for: Marketers, Agencies, Lead Generators, and Anyone Tired of Manual Data Entry.</p>
@@ -211,7 +218,7 @@ const faqSchema = {
     <div class="container">
       <h2 id="problem-title">Why ChatGPT is Not Enough</h2>
       <p class="section-copy">
-        Chat AI is useful when you need words. It drafts, explains, and outlines. Then the cursor blinks, and the browser work is still yours. Action AI is the other half: an agent that sits in a live browser and does the clicking.
+        ChatGPT gives you homework. It gives you a 7-step guide and leaves you to do the work. Click Action AI does the work for you.
       </p>
       <ul class="problem-list">
         {problems.map((problem) => (
@@ -224,7 +231,7 @@ const faqSchema = {
           </li>
         ))}
       </ul>
-      <p class="bridge">Click Action AI bridges the gap between “knowing” and “doing”.</p>
+      <p class="bridge">ChatGPT gives you homework. Click Action AI does the work for you.</p>
       <div class="cta-row">
         <AffiliateCta>Get Click Action AI →</AffiliateCta>
       </div>

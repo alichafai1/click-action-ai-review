@@ -1,0 +1,27 @@
+---
+const missions = [
+  { title: 'Find 50 Real Estate Agents', meta: 'CSV export' },
+  { title: 'Compare Competitor Prices', meta: 'Google Sheets' },
+  { title: 'Local Dentist Lead List', meta: 'CSV export' },
+  { title: 'Directory Contact Pass', meta: 'PDF report' },
+];
+---
+
+<figure class="mock">
+  <figcaption class="mock-top">
+    <span class="mock-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span>Mission Library</span>
+    <span class="mock-tag">50 ready</span>
+  </figcaption>
+  <div class="mock-screen">
+    <div class="mission-grid">
+      {missions.map((mission) => (
+        <article class="mission-card">
+          <strong>{mission.title}</strong>
+          <span>{mission.meta}</span>
+          <span class="mission-run">Run</span>
+        </article>
+      ))}
+    </div>
+  </div>
+</figure>

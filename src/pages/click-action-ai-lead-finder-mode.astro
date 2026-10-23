@@ -3,8 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import AffiliateCta from '../components/AffiliateCta.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Icon from '../components/Icon.astro';
-import PromptMockup from '../components/mockups/PromptMockup.astro';
-import ExportMockup from '../components/mockups/ExportMockup.astro';
+import LeadFinderDashboard from '../components/mockups/LeadFinderDashboard.astro';
 import RelatedReading from '../components/RelatedReading.astro';
 import StickyBar from '../components/StickyBar.astro';
 
@@ -83,24 +82,7 @@ const faqSchema = {
       <p class="section-copy">
         You type “Dentists in Miami.” The agent searches public results, including map listings and directory sites, opens the pages, and copies the practice name, website, and phone number when those are on the page. The mission ends as a CSV.
       </p>
-      <div class="steps">
-        <div class="step">
-          <div class="step-copy">
-            <p class="step-index">The prompt</p>
-            <h3>Name the list, not the method.</h3>
-            <p>Trade, city, fields, file. The agent plans the clicks. You do not open forty tabs first.</p>
-          </div>
-          <PromptMockup prompt="Find dentists in Miami with name, phone, and website. Export a CSV." />
-        </div>
-        <div class="step reverse">
-          <div class="step-copy">
-            <p class="step-index">The file</p>
-            <h3>Hours of pasting, skipped.</h3>
-            <p>The same fields, row after row. You still skim the sheet. You no longer build it by hand.</p>
-          </div>
-          <ExportMockup />
-        </div>
-      </div>
+      <LeadFinderDashboard />
       <div class="cta-row">
         <AffiliateCta>Get Click Action AI →</AffiliateCta>
       </div>
@@ -143,8 +125,7 @@ const faqSchema = {
         items={[
           { href: '/', title: 'Full review', text: 'The agent, the score, and the limits.' },
           { href: '/click-action-ai-pricing', title: 'Pricing', text: 'The $36.95 front-end for list building.' },
-          { href: '/click-action-ai-bonus', title: 'Bonuses', text: 'Fifty prompts, including local lead lists.' },
-          { href: '/click-action-ai-for-local-businesses', title: 'For local businesses', text: 'Dentists, plumbers, and roofers.' },
+          { href: '/click-action-ai-tutorial', title: 'Tutorial', text: 'Run Lead Finder from the dashboard in five steps.' },
         ]}
       />
     </div>
