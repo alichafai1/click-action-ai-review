@@ -1,0 +1,36 @@
+---
+interface Row {
+  label: string;
+  left: string;
+  right: string;
+}
+
+interface Props {
+  leftName: string;
+  rightName: string;
+  rows: Row[];
+}
+
+const { leftName, rightName, rows } = Astro.props;
+---
+
+<div class="versus" role="table" aria-label={`Comparison of ${leftName} and ${rightName}`}>
+  <div class="versus-head" role="row">
+    <div role="columnheader"> </div>
+    <div role="columnheader">{leftName}</div>
+    <div class="is-featured" role="columnheader">{rightName}</div>
+  </div>
+  {rows.map((row) => (
+    <div class="versus-row" role="row">
+      <div class="versus-label" role="rowheader">{row.label}</div>
+      <div role="cell">
+        <span class="versus-who">{leftName}</span>
+        {row.left}
+      </div>
+      <div class="is-featured" role="cell">
+        <span class="versus-who">{rightName}</span>
+        {row.right}
+      </div>
+    </div>
+  ))}
+</div>

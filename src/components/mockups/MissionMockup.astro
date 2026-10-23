@@ -1,0 +1,26 @@
+---
+const missions = [
+  { name: 'Find 50 real estate agents', meta: 'CSV', state: 'ready' },
+  { name: 'Monitor 5 competitor prices', meta: 'Google Sheets', state: 'active' },
+  { name: 'Local dentist lead list', meta: 'CSV', state: '' },
+  { name: 'Directory contact pass', meta: 'PDF', state: '' },
+];
+---
+
+<figure class="mock">
+  <figcaption class="mock-top">
+    <span class="mock-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span>Gig Missions</span>
+    <span class="mock-tag">50 ready</span>
+  </figcaption>
+  <div class="mock-screen">
+    <p class="mock-label">Pick a mission</p>
+    {missions.map((mission) => (
+      <div class:list={['mock-listing', { 'is-reading': mission.state === 'active' }]}>
+        <strong>{mission.name}</strong>
+        <span>{mission.meta}</span>
+      </div>
+    ))}
+    <div class="mock-run">Run selected mission</div>
+  </div>
+</figure>

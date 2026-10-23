@@ -1,0 +1,290 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AffiliateCta from '../components/AffiliateCta.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Icon from '../components/Icon.astro';
+import RelatedReading from '../components/RelatedReading.astro';
+import StickyBar from '../components/StickyBar.astro';
+import { affiliateUrl } from '../lib/affiliate';
+
+const description =
+  'Is Click Action AI legit or a scam? An honest 2026 look at the browser agent, the green flags, the limits, and what it will not do.';
+
+const greenFlags = [
+  {
+    icon: 'users',
+    title: 'A real creator',
+    text: 'The product is from Yogesh Agarwal (NTL) and sold on JVZoo. You are not wiring money to an anonymous page with no vendor name.',
+  },
+  {
+    icon: 'eye',
+    title: 'Live browser proof',
+    text: 'The pitch is a cloud browser you can watch. If the demo is only a slideshow and the product never opens a page, do not buy it. The product I am reviewing is the one that clicks on screen.',
+  },
+  {
+    icon: 'tag',
+    title: 'One-time front-end',
+    text: 'The front-end is $36.95 once, not a subscription you forget about. Upgrades after that are optional and printed on the cart.',
+  },
+  {
+    icon: 'pause',
+    title: 'Pause and take over',
+    text: 'When it hits a login or a CAPTCHA it stops and hands you the browser. That is a control, and it is also the proof it is not a silent exploit.',
+  },
+  {
+    icon: 'shield',
+    title: 'Refund terms on the checkout',
+    text: 'JVZoo shows the vendor’s refund policy on the order page. Read it before you pay. JVZoo itself does not promise a refund for every product, so the line on that cart is the one that counts.',
+  },
+];
+
+const redFlags = [
+  {
+    title: 'You still have to prompt it',
+    text: 'It is not fully hands-off. A sloppy sentence gets a sloppy mission. You start the job, and you stay nearby for the steps that need a person.',
+  },
+  {
+    title: 'Hard anti-bot sites can stop it',
+    text: 'Some sites are built to refuse automated browsers. Pause and take over helps on a checkpoint. It does not make a hostile site cooperate. Plan on doing those pages yourself.',
+  },
+];
+
+const faqs = [
+  {
+    question: 'Is Click Action AI a scam?',
+    answer:
+      'No. Click Action AI is a real browser agent from Yogesh Agarwal (NTL), sold on JVZoo. It opens a live browser and does repetitive web tasks. It is not a fake download, and it is also not a robot employee that needs no input.',
+  },
+  {
+    question: 'Does Click Action AI bypass CAPTCHAs or hack websites?',
+    answer:
+      'No. It does not bypass CAPTCHAs, break logins, or hack sites. When it hits a checkpoint it pauses so you can complete that step and hand the browser back.',
+  },
+  {
+    question: 'Is it safe to pay for Click Action AI?',
+    answer:
+      'You pay on the JVZoo checkout, not by sending crypto or a wire to a stranger. Read the refund line on that order page before you enter a card.',
+  },
+  {
+    question: 'Will Click Action AI work on every website?',
+    answer:
+      'No. Ordinary public pages, directories, and simple forms are the fit. Sites with heavy anti-bot walls, constant logins, or pages that change under a script can stall it. That is a limit, not a secret.',
+  },
+  {
+    question: 'Can I trust the 4.7 rating?',
+    answer:
+      'The 4.7 is this site’s editorial score, not a pile of verified customer stars. It reflects a tool that does the clicking and still needs you for prompts, logins, and blocked sites.',
+  },
+];
+
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'Click Action AI',
+  description:
+    'AI browser agent from Yogesh Agarwal that opens a live browser and runs repetitive web tasks. It does not bypass CAPTCHAs.',
+  brand: { '@type': 'Brand', name: 'Click Action AI' },
+  image: 'https://clickactionai.info/favicon.svg',
+  offers: {
+    '@type': 'Offer',
+    price: '36.95',
+    priceCurrency: 'USD',
+    availability: 'https://schema.org/InStock',
+    url: affiliateUrl,
+  },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.7',
+    bestRating: '5',
+    worstRating: '1',
+    ratingCount: 1,
+  },
+  review: {
+    '@type': 'Review',
+    author: { '@type': 'Organization', name: 'Click Action AI Review' },
+    reviewRating: {
+      '@type': 'Rating',
+      ratingValue: '4.7',
+      bestRating: '5',
+      worstRating: '1',
+    },
+    reviewBody:
+      'Click Action AI is a legitimate browser agent. It can take the repetitive clicking off your plate. It does not bypass CAPTCHAs, and it is not hands-off.',
+  },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+---
+
+<BaseLayout
+  title="Is Click Action AI Legit or a Scam? Honest 2026 Review"
+  description={description}
+  canonicalURL="/click-action-ai-legit-or-scam"
+  schema={[productSchema, faqSchema]}
+  bodyClass="has-sticky-cta"
+>
+  <section class="page-hero" data-sticky-trigger>
+    <div class="container">
+      <Breadcrumbs
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Legit or scam', href: '/click-action-ai-legit-or-scam' },
+        ]}
+      />
+      <p class="eyebrow">Trust check · 2026</p>
+      <h1>Is Click Action AI Legit or a Scam? Honest 2026 Review</h1>
+      <p class="lede">
+        AI agents sound like science fiction. A page that promises a robot will do your job is exactly where a scam would hide. Here is the plain version of what this one is, and what it is not.
+      </p>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="verdict-title">
+    <div class="container">
+      <h2 id="verdict-title">Quick verdict</h2>
+      <aside class="verdict" aria-label="Legit verdict">
+        <p class="rating">
+          <strong>4.7</strong>
+          <span>/5</span>
+        </p>
+        <div>
+          <h3>Legit.</h3>
+          <p>
+            Click Action AI is a real browser agent by Yogesh Agarwal (NTL). It does not bypass CAPTCHAs. You have to step in for those. On ordinary pages it can take about 90% of the boring clicking off your plate: search, open, copy, and export.
+          </p>
+          <p>Editorial score from this review, not a count of anonymous customer stars.</p>
+        </div>
+      </aside>
+      <p class="section-copy">
+        “The bulk of the boring work” means the repeated browser steps on ordinary pages. It does not mean 100 percent of a job that includes judgment, phone calls, or a site that refuses bots. If someone sells it as a silent employee, that pitch is the fiction. The product is the browser you can watch.
+      </p>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="green-title">
+    <div class="container">
+      <h2 id="green-title">Five green flags</h2>
+      <div class="flag-grid">
+        {greenFlags.map((flag) => (
+          <article class="flag-card is-good">
+            <div class="feature-icon">
+              <Icon name={flag.icon} />
+            </div>
+            <h3>{flag.title}</h3>
+            <p>{flag.text}</p>
+          </article>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="red-title">
+    <div class="container">
+      <h2 id="red-title">Two red flags, left in on purpose</h2>
+      <p class="section-copy">
+        A legit tool can still be a bad buy if you wanted magic. These two limits are why the score is 4.7 and not a perfect five.
+      </p>
+      <div class="split-2">
+        {redFlags.map((flag) => (
+          <article class="flag-card is-bad">
+            <div class="feature-icon">
+              <Icon name="alert" />
+            </div>
+            <h3>{flag.title}</h3>
+            <p>{flag.text}</p>
+          </article>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="real-title">
+    <div class="container">
+      <h2 id="real-title">What “real” looks like when you use it</h2>
+      <div class="flow">
+        <article class="flow-card">
+          <div class="feature-icon">
+            <Icon name="cursor" />
+          </div>
+          <h3>You write the job</h3>
+          <p>A useful command names the niche, the city, the fields, and the file. “Find 50 plumbers in Austin and put them in a CSV” is a real brief.</p>
+        </article>
+        <article class="flow-card">
+          <div class="feature-icon">
+            <Icon name="browser" />
+          </div>
+          <h3>You watch the browser</h3>
+          <p>A cloud browser opens. Live Watch shows the page and the checklist. If the screen never moves, you are not looking at the product this review describes.</p>
+        </article>
+        <article class="flow-card">
+          <div class="feature-icon">
+            <Icon name="download" />
+          </div>
+          <h3>You take the file, or you step in</h3>
+          <p>The happy path ends in a CSV, a Sheet, or a PDF. The other path is a pause for a password or a CAPTCHA, which you complete yourself.</p>
+        </article>
+      </div>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq" aria-labelledby="legit-faq-title">
+    <div class="container">
+      <h2 id="legit-faq-title">Safety and reliability FAQ</h2>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details>
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Get Click Action AI + My Bonuses →</AffiliateCta>
+      </div>
+      <RelatedReading
+        items={[
+          {
+            href: '/',
+            title: 'Full review',
+            text: 'The long breakdown: workflow, features, and who should buy.',
+          },
+          {
+            href: '/click-action-ai-pricing',
+            title: 'Pricing',
+            text: 'Whether $36.95 is worth it next to a VA and a scraper.',
+          },
+          {
+            href: '/click-action-ai-bonus',
+            title: 'Bonuses',
+            text: 'The swipe file and compliance checklist from this review, and how to claim them.',
+          },
+        ]}
+      />
+    </div>
+  </section>
+
+  <StickyBar note="Legit tool. Not hands-off." />
+</BaseLayout>

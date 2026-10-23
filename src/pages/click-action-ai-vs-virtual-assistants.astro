@@ -1,0 +1,211 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AffiliateCta from '../components/AffiliateCta.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Icon from '../components/Icon.astro';
+import RelatedReading from '../components/RelatedReading.astro';
+import StickyBar from '../components/StickyBar.astro';
+import Versus from '../components/Versus.astro';
+
+const description =
+  'Click Action AI vs a virtual assistant: $36.95 once compared with $500–$1,000 a month. See cost, hours, speed, and what you still review.';
+
+const rows = [
+  {
+    label: 'Cost',
+    left: '$500–$1,000 a month is a common range, before revisions and extra hours.',
+    right: '$36.95 once for the front-end. Optional cart upgrades are separate.',
+  },
+  {
+    label: 'Availability',
+    left: 'Usually business hours, plus the time to brief them and wait for the handoff.',
+    right: 'You can start a mission any hour. You still launch it, and you step in when it pauses.',
+  },
+  {
+    label: 'Speed',
+    left: 'Depends on their queue, your brief, and how many rounds of edits you need.',
+    right: 'The browser starts as soon as the mission does. The export is the deliverable.',
+  },
+  {
+    label: 'Errors',
+    left: 'People mistype, skip a row, or follow a brief that was unclear. You still check the sheet.',
+    right: 'It can misread a page or stop on a block. You still check the export. It does not replace judgment.',
+  },
+];
+
+const faqs = [
+  {
+    question: 'Does Click Action AI replace a virtual assistant?',
+    answer:
+      'It replaces the repetitive browser work: searching, opening pages, copying fields, and exporting a file. It does not replace a person for phone calls, judgment, account strategy, or sites that block automated browsers.',
+  },
+  {
+    question: 'How much can you save in the first month?',
+    answer:
+      'If that month of clicking would have cost a $500 virtual assistant, the $36.95 front-end leaves about $463. At $1,000 a month, the difference is about $963. That math only holds when the work is browser work the agent can actually run.',
+  },
+  {
+    question: 'Does Click Action AI work 24 hours a day without you?',
+    answer:
+      'You can start a mission at any hour, which a weekday VA cannot match. It is not an overnight employee. You launch the job, and you have to be available when it pauses for a login or a CAPTCHA.',
+  },
+  {
+    question: 'Does a virtual assistant still make sense?',
+    answer:
+      'Yes, for work that needs a person: calls, inboxes, custom judgment, and accounts you do not want an agent inside. Use the agent for the list-building and data entry you would otherwise brief every month.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+---
+
+<BaseLayout
+  title="Click Action AI vs. Hiring a Virtual Assistant (VA)"
+  description={description}
+  canonicalURL="/click-action-ai-vs-virtual-assistants"
+  schema={faqSchema}
+  bodyClass="has-sticky-cta"
+>
+  <section class="page-hero" data-sticky-trigger>
+    <div class="container">
+      <Breadcrumbs
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Vs a virtual assistant', href: '/click-action-ai-vs-virtual-assistants' },
+        ]}
+      />
+      <p class="eyebrow">Comparison</p>
+      <h1>Click Action AI vs. Hiring a Virtual Assistant (VA)</h1>
+      <aside class="verdict solo" aria-label="Quick verdict">
+        <div>
+          <h2>Quick verdict</h2>
+          <p>
+            A virtual assistant commonly costs $500–$1,000 a month and needs a brief every time. Click Action AI is $36.95 once. You can start a mission at any hour. You still have to launch it.
+          </p>
+        </div>
+      </aside>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Lock in Your Access for $36.95 →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="table-title">
+    <div class="container">
+      <h2 id="table-title">A monthly hire next to a one-time agent</h2>
+      <p class="section-copy">
+        The comparison is the clicking: research, lists, and data entry. It is not a claim that software can take client calls or make decisions for you.
+      </p>
+      <Versus leftName="Virtual assistant" rightName="Click Action AI" rows={rows} />
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="math-title">
+    <div class="container">
+      <h2 id="math-title">The money in the first month</h2>
+      <div class="math-panel">
+        <div>
+          <p>
+            A $500 month minus the $36.95 front-end is about $463 still in your pocket. A $1,000 month minus $36.95 is about $963. One VA month at $500 is roughly thirteen times the front-end. At $1,000 it is roughly twenty-seven times.
+          </p>
+          <p>
+            That is the save only if those hours were browser work. Calls, custom judgment, and sites that refuse bots still belong with a person. Training time is the other leak: a new VA needs the brief, the examples, and a revision pass. The agent needs a clear prompt.
+          </p>
+        </div>
+        <div class="math-stat">
+          <strong>$463</strong>
+          <span>Left from a $500 VA month after the $36.95 front-end.</span>
+        </div>
+      </div>
+      <div class="aha-grid">
+        <article class="feature-card">
+          <div class="feature-icon">
+            <Icon name="users" />
+          </div>
+          <h3>The VA path</h3>
+          <p>Hire, brief, wait, review, and pay again next month for the same kind of list.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">
+            <Icon name="clock" />
+          </div>
+          <h3>Any hour, not unattended</h3>
+          <p>Start a mission at midnight if you want. Stay nearby for a pause. It does not run a night shift alone.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">
+            <Icon name="calculator" />
+          </div>
+          <h3>Check the export</h3>
+          <p>Both options can be wrong. A person skips a row. The agent misreads a page. You still look at the file.</p>
+        </article>
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="pick-title">
+    <div class="container">
+      <h2 id="pick-title">Keep a person for the human work</h2>
+      <div class="split-2">
+        <article class="flag-card">
+          <div class="feature-icon">
+            <Icon name="users" />
+          </div>
+          <h3>Hire the VA</h3>
+          <p>The task needs a conversation, a judgment call, or access you will not hand to an agent.</p>
+        </article>
+        <article class="flag-card is-good">
+          <div class="feature-icon">
+            <Icon name="browser" />
+          </div>
+          <h3>Run the agent</h3>
+          <p>The task is the same search and the same sheet, and you are tired of paying for it every month.</p>
+        </article>
+      </div>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Lock in Your Access for $36.95 →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <h2 id="faq-title">Virtual assistant comparison FAQ</h2>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details>
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI + My Bonuses →</AffiliateCta>
+      </div>
+      <RelatedReading
+        items={[
+          { href: '/', title: 'Full review', text: 'What the agent does, and the work it leaves with you.' },
+          { href: '/click-action-ai-pricing', title: 'Pricing', text: 'The one-time fee, the coupon, and the upgrades you can skip.' },
+          { href: '/click-action-ai-bonus', title: 'Bonuses', text: 'Fifty prompts and a compliance checklist.' },
+          { href: '/click-action-ai-vs-web-scrapers', title: 'Vs web scrapers', text: 'Why a script breaks when the page changes.' },
+        ]}
+      />
+    </div>
+  </section>
+
+  <StickyBar note="One-time front-end, not a monthly VA" />
+</BaseLayout>

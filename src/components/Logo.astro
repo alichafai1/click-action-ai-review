@@ -1,0 +1,19 @@
+---
+interface Props {
+  href?: string;
+}
+
+const { href = '/' } = Astro.props;
+---
+
+<a class="logo" href={href}>
+  <svg class="logo-mark" viewBox="0 0 36 36" aria-hidden="true">
+    <path
+      fill="#00F0FF"
+      d="M9 5.5 28.5 18.2l-8.2 1.1 4.6 10.2-3.4 1.2-4.7-10.4-6.8 5.6L9 5.5Z"
+    />
+    <circle cx="27" cy="8" r="2.2" fill="#00F0FF" opacity="0.95" />
+    <circle cx="27" cy="8" r="4.2" fill="none" stroke="#00F0FF" stroke-width="1.2" opacity="0.7" />
+  </svg>
+  <span class="logo-word">ClickActionAI <span>Review</span></span>
+</a>

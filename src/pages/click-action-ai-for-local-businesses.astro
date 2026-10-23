@@ -1,0 +1,170 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AffiliateCta from '../components/AffiliateCta.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Icon from '../components/Icon.astro';
+import RelatedReading from '../components/RelatedReading.astro';
+import StickyBar from '../components/StickyBar.astro';
+
+const description =
+  'Click Action AI for local businesses: use Lead Finder to turn a trade and a city into names, phones, and websites.';
+
+const fields = [
+  { icon: 'search', title: 'Trade plus city', text: '“Dentists in Chicago” is a complete kind of prompt when you also name the fields and the file.' },
+  { icon: 'list', title: 'The rows', text: 'Ask for business name, phone, and website. Add a contact-page URL if you want a place to follow up.' },
+  { icon: 'download', title: 'Minutes, when the sites are open', text: 'A straightforward public list can come back in one sitting. A city full of login walls will not.' },
+];
+
+const examples = [
+  { icon: 'users', title: 'Dentists in Chicago', text: 'Practice name, phone, website, and whether the site says they take new patients, if that line is published.' },
+  { icon: 'browser', title: 'Plumbers in Austin', text: 'Company name, phone, site, and city. Skip directory pages that are not the plumber.' },
+  { icon: 'file', title: 'Roofers in Phoenix', text: 'Company name, phone, and the service area they print on the site.' },
+];
+
+const faqs = [
+  {
+    question: 'How do I use Lead Finder for a local list?',
+    answer:
+      'Type the trade, the city, the fields, and the export. Example: “Find dentists in Chicago with practice name, phone, and website. Export a CSV.” Watch the run. Pause if a site asks you to log in.',
+  },
+  {
+    question: 'Will I get every business in the city?',
+    answer:
+      'No. You get the public listings the mission can open, up to the number you asked for. Some businesses have no site. Some directories block automated visits. The sheet is a starting list, not the phone book.',
+  },
+  {
+    question: 'How fast is a list like dentists in Chicago?',
+    answer:
+      'A clear prompt against ordinary public pages can finish in minutes. That is not a timer for every city or every trade. If the run hits blocks, it takes as long as you need to step in or stop.',
+  },
+  {
+    question: 'Can a local business use the list for email?',
+    answer:
+      'Only with the contact details that were published for that purpose, and only if your email follows the rules that apply to you. A CSV is not permission to spam. The bonus checklist covers when to stop.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+---
+
+<BaseLayout
+  title="Click Action AI for Local Businesses: Find Local Leads Fast"
+  description={description}
+  canonicalURL="/click-action-ai-for-local-businesses"
+  schema={faqSchema}
+  bodyClass="has-sticky-cta"
+>
+  <section class="page-hero" data-sticky-trigger>
+    <div class="container">
+      <Breadcrumbs
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'For local businesses', href: '/click-action-ai-for-local-businesses' },
+        ]}
+      />
+      <p class="eyebrow">Use case</p>
+      <h1>Click Action AI for Local Businesses: Find Local Leads Fast</h1>
+      <p class="lede">
+        Dentists, plumbers, and roofers do not need another lecture on networking. They need a list. Lead Finder turns a trade and a city into names, numbers, and websites.
+      </p>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="mode-title">
+    <div class="container">
+      <h2 id="mode-title">Lead Finder, in one prompt</h2>
+      <div class="aha-grid">
+        {fields.map((item) => (
+          <article class="feature-card">
+            <div class="feature-icon"><Icon name={item.icon} /></div>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+      <p class="section-copy">
+        A prompt that works: “Find dentists in Chicago with practice name, phone, and website. Skip directory clones. Export a CSV.”
+      </p>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="examples-title">
+    <div class="container">
+      <h2 id="examples-title">The same pattern, three trades</h2>
+      <div class="aha-grid">
+        {examples.map((item) => (
+          <article class="feature-card">
+            <div class="feature-icon"><Icon name={item.icon} /></div>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI + My Bonuses →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="fit-title">
+    <div class="container">
+      <h2 id="fit-title">A list you can call, not a magic book</h2>
+      <div class="split-2">
+        <article class="flag-card is-good">
+          <div class="feature-icon"><Icon name="search" /></div>
+          <h3>Good prompt</h3>
+          <p>One trade, one city, a number of rows, and only the public fields you will actually use.</p>
+        </article>
+        <article class="flag-card is-bad">
+          <div class="feature-icon"><Icon name="alert" /></div>
+          <h3>Weak prompt</h3>
+          <p>“Get me all the leads.” No city, no fields, no limit. The mission wanders, and the sheet is junk.</p>
+        </article>
+      </div>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Lock in Your Access for $36.95 →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <h2 id="faq-title">Local business FAQ</h2>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details>
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI →</AffiliateCta>
+      </div>
+      <RelatedReading
+        items={[
+          { href: '/', title: 'Full review', text: 'What Lead Finder does, and where it pauses.' },
+          { href: '/click-action-ai-pricing', title: 'Pricing', text: 'One list-building tool for $36.95, not a monthly seat.' },
+          { href: '/click-action-ai-bonus', title: 'Bonuses', text: 'Local-list prompts and the rules for using them.' },
+          { href: '/click-action-ai-for-lead-generation', title: 'For lead generation', text: 'The B2B version of the same workflow.' },
+        ]}
+      />
+    </div>
+  </section>
+
+  <StickyBar note="Trade + city, then a CSV" />
+</BaseLayout>

@@ -1,0 +1,21 @@
+---
+import { affiliateUrl } from '../lib/affiliate';
+
+interface Props {
+  extraClass?: string;
+  size?: 'md' | 'lg';
+  id?: string;
+}
+
+const { extraClass, size = 'md', id } = Astro.props;
+---
+
+<a
+  id={id}
+  class:list={['btn', extraClass, { 'btn-lg': size === 'lg' }]}
+  href={affiliateUrl}
+  target="_blank"
+  rel="noopener noreferrer sponsored"
+>
+  <slot />
+</a>

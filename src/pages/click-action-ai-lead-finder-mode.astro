@@ -1,0 +1,154 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AffiliateCta from '../components/AffiliateCta.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Icon from '../components/Icon.astro';
+import PromptMockup from '../components/mockups/PromptMockup.astro';
+import ExportMockup from '../components/mockups/ExportMockup.astro';
+import RelatedReading from '../components/RelatedReading.astro';
+import StickyBar from '../components/StickyBar.astro';
+
+const description =
+  'Click Action AI Lead Finder turns a trade and a city into names, websites, and phone numbers, then exports a CSV.';
+
+const points = [
+  { icon: 'search', title: 'One line', text: '“Dentists in Miami” plus the fields you want. No spreadsheet ritual before you start.' },
+  { icon: 'browser', title: 'Public listings', text: 'It searches open results, including map listings and directory pages, and opens the business sites.' },
+  { icon: 'download', title: 'A CSV', text: 'Name, website, and phone when those are published. You still check the rows before you call.' },
+];
+
+const faqs = [
+  {
+    question: 'What does Lead Finder Mode do?',
+    answer:
+      'You type a trade and a city, such as “Dentists in Miami,” and name the fields. The agent visits public map results and directory pages, copies published names, websites, and phone numbers, and exports a CSV.',
+  },
+  {
+    question: 'Does it replace manual prospecting?',
+    answer:
+      'It replaces the copy-and-paste. You still decide who is a real fit and you still make the call. A blocked directory or a site with no phone number will leave a gap in the sheet.',
+  },
+  {
+    question: 'Will every business in the city be on the list?',
+    answer:
+      'No. You get the public listings the mission can open, up to the number you asked for. Some businesses have no website. Some directories refuse automated visits.',
+  },
+  {
+    question: 'What should the prompt include?',
+    answer:
+      'The trade, the city, the fields, and the file. “Find dentists in Miami with practice name, phone, and website. Export a CSV.” is enough to run.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+---
+
+<BaseLayout
+  title="Click Action AI Lead Finder Mode: Automated B2B Prospecting"
+  description={description}
+  canonicalURL="/click-action-ai-lead-finder-mode"
+  schema={faqSchema}
+  bodyClass="has-sticky-cta"
+>
+  <section class="page-hero" data-sticky-trigger>
+    <div class="container">
+      <Breadcrumbs
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Lead Finder', href: '/click-action-ai-lead-finder-mode' },
+        ]}
+      />
+      <p class="eyebrow">Feature</p>
+      <h1>Click Action AI Lead Finder: Turn a City into a Client List</h1>
+      <p class="lede">
+        Stop searching prospect by prospect. Type the trade and the city. The agent visits the public listings and brings back a file.
+      </p>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="how-title">
+    <div class="container">
+      <h2 id="how-title">How Lead Finder works</h2>
+      <p class="section-copy">
+        You type “Dentists in Miami.” The agent searches public results, including map listings and directory sites, opens the pages, and copies the practice name, website, and phone number when those are on the page. The mission ends as a CSV.
+      </p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-copy">
+            <p class="step-index">The prompt</p>
+            <h3>Name the list, not the method.</h3>
+            <p>Trade, city, fields, file. The agent plans the clicks. You do not open forty tabs first.</p>
+          </div>
+          <PromptMockup prompt="Find dentists in Miami with name, phone, and website. Export a CSV." />
+        </div>
+        <div class="step reverse">
+          <div class="step-copy">
+            <p class="step-index">The file</p>
+            <h3>Hours of pasting, skipped.</h3>
+            <p>The same fields, row after row. You still skim the sheet. You no longer build it by hand.</p>
+          </div>
+          <ExportMockup />
+        </div>
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="why-title">
+    <div class="container">
+      <h2 id="why-title">Why it matters</h2>
+      <div class="aha-grid">
+        {points.map((item) => (
+          <article class="feature-card">
+            <div class="feature-icon"><Icon name={item.icon} /></div>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI + My Bonuses →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <h2 id="faq-title">Lead Finder FAQ</h2>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details>
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Lock in Your Access for $36.95 →</AffiliateCta>
+      </div>
+      <RelatedReading
+        items={[
+          { href: '/', title: 'Full review', text: 'The agent, the score, and the limits.' },
+          { href: '/click-action-ai-pricing', title: 'Pricing', text: 'The $36.95 front-end for list building.' },
+          { href: '/click-action-ai-bonus', title: 'Bonuses', text: 'Fifty prompts, including local lead lists.' },
+          { href: '/click-action-ai-for-local-businesses', title: 'For local businesses', text: 'Dentists, plumbers, and roofers.' },
+        ]}
+      />
+    </div>
+  </section>
+
+  <StickyBar note="A city, a trade, a CSV" />
+</BaseLayout>

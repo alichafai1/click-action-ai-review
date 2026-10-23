@@ -1,0 +1,25 @@
+---
+interface Item {
+  href: string;
+  title: string;
+  text: string;
+}
+
+interface Props {
+  items: Item[];
+}
+
+const { items } = Astro.props;
+---
+
+<nav class="related" aria-label="Related reading">
+  <h2>Keep reading</h2>
+  <div class="related-grid">
+    {items.map((item) => (
+      <a class="related-card" href={item.href}>
+        <strong>{item.title}</strong>
+        <span>{item.text}</span>
+      </a>
+    ))}
+  </div>
+</nav>

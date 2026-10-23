@@ -1,0 +1,167 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AffiliateCta from '../components/AffiliateCta.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Icon from '../components/Icon.astro';
+import RelatedReading from '../components/RelatedReading.astro';
+import StickyBar from '../components/StickyBar.astro';
+
+const description =
+  'Click Action AI for lead generation: stop copying public business details by hand. The agent visits sites and exports a file you can import.';
+
+const pain = [
+  { icon: 'search', title: 'The manual loop', text: 'Search, open a company site, copy the name, hunt for a phone, paste, repeat. LinkedIn makes this feel endless, and it often blocks bots.' },
+  { icon: 'browser', title: 'Public sites instead', text: 'Point the mission at business websites and directory pages that publish the fields. Do not treat a private network as a scrape target.' },
+  { icon: 'download', title: 'A file your CRM can take', text: 'Export CSV with the columns you named. Import that file into the CRM. The agent is not your CRM login.' },
+];
+
+const columns = [
+  { icon: 'list', title: 'Name the columns', text: 'Company, website, public phone, city, and a contact-page URL. Skip personal inboxes that were never published.' },
+  { icon: 'eye', title: 'Watch the first ten', text: 'If the first rows are wrong, stop and rewrite the prompt. Do not let a bad brief run for an hour.' },
+  { icon: 'shield', title: 'Then the rules', text: 'A list is not consent to email people. Use published business contacts, and follow the email rules that apply to you.' },
+];
+
+const faqs = [
+  {
+    question: 'Can Click Action AI replace manual B2B lead gen?',
+    answer:
+      'It replaces the copy-and-paste across public websites: visit, read the published details, and write the row. It does not replace a conversation, and it does not reliably scrape LinkedIn. LinkedIn often blocks automated browsers. Use company sites and pages that publish the contact.',
+  },
+  {
+    question: 'Will it find email addresses?',
+    answer:
+      'Only if the address is published on the page you asked it to read. Do not ask it to guess personal emails or pull addresses from a private network. Invented emails bounce and can violate the law.',
+  },
+  {
+    question: 'How do I get the list into a CRM?',
+    answer:
+      'Export a CSV with stable column names, then use your CRM’s import. If the CRM is a website you are allowed to use, you can pause and enter rows yourself. Do not put your CRM password in the prompt.',
+  },
+  {
+    question: 'What does a good lead-gen prompt look like?',
+    answer:
+      '“Find 30 commercial cleaning companies in Atlanta that mention office contracts. Record company, phone, website, and contact URL. Export a CSV.” One niche, one place, a limit, and the columns.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+---
+
+<BaseLayout
+  title="Click Action AI for Lead Generation: Stop Copy-Pasting Data"
+  description={description}
+  canonicalURL="/click-action-ai-for-lead-generation"
+  schema={faqSchema}
+  bodyClass="has-sticky-cta"
+>
+  <section class="page-hero" data-sticky-trigger>
+    <div class="container">
+      <Breadcrumbs
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'For lead generation', href: '/click-action-ai-for-lead-generation' },
+        ]}
+      />
+      <p class="eyebrow">Use case</p>
+      <h1>Click Action AI for Lead Generation: Stop Copy-Pasting Data</h1>
+      <p class="lede">
+        Manual lead gen is a loop of search, open, copy, paste. The agent visits public business sites, takes the fields you named, and formats a file you can import.
+      </p>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="pain-title">
+    <div class="container">
+      <h2 id="pain-title">The workflow it actually takes</h2>
+      <div class="aha-grid">
+        {pain.map((item) => (
+          <article class="feature-card">
+            <div class="feature-icon"><Icon name={item.icon} /></div>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="build-title">
+    <div class="container">
+      <h2 id="build-title">Build a list you are allowed to use</h2>
+      <div class="aha-grid">
+        {columns.map((item) => (
+          <article class="feature-card">
+            <div class="feature-icon"><Icon name={item.icon} /></div>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI + My Bonuses →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="fit-title">
+    <div class="container">
+      <h2 id="fit-title">Where this beats another afternoon of tabs</h2>
+      <div class="split-2">
+        <article class="flag-card is-good">
+          <div class="feature-icon"><Icon name="download" /></div>
+          <h3>The agent’s job</h3>
+          <p>Public company sites, published phones, and a CSV with the same columns every time.</p>
+        </article>
+        <article class="flag-card is-bad">
+          <div class="feature-icon"><Icon name="alert" /></div>
+          <h3>Still your job</h3>
+          <p>LinkedIn walls, guessed emails, and the decision to contact someone. Those stay with you.</p>
+        </article>
+      </div>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Lock in Your Access for $36.95 →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <h2 id="faq-title">Lead generation FAQ</h2>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details>
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI →</AffiliateCta>
+      </div>
+      <RelatedReading
+        items={[
+          { href: '/', title: 'Full review', text: 'Prompt, live browser, export.' },
+          { href: '/click-action-ai-pricing', title: 'Pricing', text: 'The one-time fee against another month of manual lists.' },
+          { href: '/click-action-ai-bonus', title: 'Bonuses', text: 'Lead prompts and the compliance checklist.' },
+          { href: '/click-action-ai-for-agencies', title: 'For agencies', text: 'The same list work, done for clients.' },
+        ]}
+      />
+    </div>
+  </section>
+
+  <StickyBar note="Public sites into a CSV" />
+</BaseLayout>

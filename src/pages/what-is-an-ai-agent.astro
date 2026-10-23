@@ -1,0 +1,171 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AffiliateCta from '../components/AffiliateCta.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Icon from '../components/Icon.astro';
+import RelatedReading from '../components/RelatedReading.astro';
+import StickyBar from '../components/StickyBar.astro';
+
+const description =
+  'What an AI agent is, and why it is different from a chatbot. A chatbot answers. An agent does the task. Click Action AI is the browser version.';
+
+const tellApart = [
+  {
+    name: 'See whether it only replies',
+    text: 'A chatbot ends when the message is written. If the browser is still waiting on you, you are talking to a chatbot.',
+    icon: 'file',
+  },
+  {
+    name: 'See whether it can use a browser',
+    text: 'An agent can open pages and click. Click Action AI does that in a cloud browser you can watch.',
+    icon: 'browser',
+  },
+  {
+    name: 'See whether you can pause and export',
+    text: 'A useful agent lets you stop it on a login or a CAPTCHA and leaves you a file, not another paragraph.',
+    icon: 'download',
+  },
+];
+
+const faqs = [
+  {
+    question: 'What is an AI agent?',
+    answer:
+      'An AI agent takes a goal and carries out steps to finish it. A chatbot answers a question. The agent uses tools, such as a browser, and returns a result you can use.',
+  },
+  {
+    question: 'How is an AI agent better than a chatbot?',
+    answer:
+      'A chatbot tells you how to book a flight. An agent would go and book it. For everyday web work, that means the tool finds the leads or the prices instead of explaining how you could. Click Action AI is that kind of agent for browser tasks.',
+  },
+  {
+    question: 'Is Click Action AI an AI agent?',
+    answer:
+      'Yes. You give it a task, it opens a live browser, it clicks and types, and it exports a file. It pauses when a human has to step in. It is not a chat window that stops at advice.',
+  },
+  {
+    question: 'Does an AI agent work with no human at all?',
+    answer:
+      'No. You write the goal, you watch the first runs, and you take over for logins, CAPTCHAs, and payments. The gain is that you are not doing every click.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How to tell a chatbot from an AI agent',
+  description: 'Check whether the tool only replies, whether it can use a browser, and whether you can pause it and export a file.',
+  step: tellApart.map((step, index) => ({
+    '@type': 'HowToStep',
+    position: index + 1,
+    name: step.name,
+    text: step.text,
+  })),
+};
+---
+
+<BaseLayout
+  title="What is an AI Agent? (And Why It's Better Than a Chatbot)"
+  description={description}
+  canonicalURL="/what-is-an-ai-agent"
+  schema={[howToSchema, faqSchema]}
+  bodyClass="has-sticky-cta"
+>
+  <section class="page-hero" data-sticky-trigger>
+    <div class="container">
+      <Breadcrumbs
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'What is an AI agent?', href: '/what-is-an-ai-agent' },
+        ]}
+      />
+      <p class="eyebrow">Guide</p>
+      <h1>What is an AI Agent? (And Why It's Better Than a Chatbot)</h1>
+      <p class="lede">
+        A chatbot answers. An AI agent executes. One leaves you with advice. The other leaves you with the task done.
+      </p>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="diff-title">
+    <div class="container">
+      <h2 id="diff-title">The difference, in one example</h2>
+      <div class="split-2">
+        <article class="flag-card">
+          <div class="feature-icon"><Icon name="file" /></div>
+          <h3>Chatbot</h3>
+          <p>You ask how to book a flight. It lists airlines, dates, and tips. You still do the booking.</p>
+        </article>
+        <article class="flag-card is-good">
+          <div class="feature-icon"><Icon name="cursor" /></div>
+          <h3>AI agent</h3>
+          <p>You give the goal. It uses tools to carry the steps out. For web work, that means it clicks the pages and returns a result.</p>
+        </article>
+      </div>
+      <p class="section-copy">
+        Click Action AI is that second kind of tool, aimed at the browser. It will not book your flights from this review’s examples. It will take “find these businesses and export them” and do the visiting. That is the agent, applied to the work most people still do by hand.
+      </p>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="howto-title">
+    <div class="container">
+      <h2 id="howto-title">How to tell them apart</h2>
+      <div class="aha-grid">
+        {tellApart.map((step, index) => (
+          <article class="feature-card">
+            <div class="feature-icon"><Icon name={step.icon} /></div>
+            <h3>{index + 1}. {step.name}</h3>
+            <p>{step.text}</p>
+          </article>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI + My Bonuses →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <h2 id="faq-title">AI agent FAQ</h2>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details>
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Lock in Your Access for $36.95 →</AffiliateCta>
+      </div>
+      <RelatedReading
+        items={[
+          { href: '/', title: 'Full review', text: 'Click Action AI as the working example.' },
+          { href: '/click-action-ai-pricing', title: 'Pricing', text: 'What the agent costs once.' },
+          { href: '/click-action-ai-bonus', title: 'Bonuses', text: 'Prompts that turn the idea into a file.' },
+          { href: '/best-ai-browser-agents', title: 'Best browser agents', text: 'Where this agent sits against four others.' },
+        ]}
+      />
+    </div>
+  </section>
+
+  <StickyBar />
+</BaseLayout>

@@ -1,0 +1,190 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AffiliateCta from '../components/AffiliateCta.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Icon from '../components/Icon.astro';
+import RelatedReading from '../components/RelatedReading.astro';
+import StickyBar from '../components/StickyBar.astro';
+
+const description =
+  'Best AI browser agents in 2026, ranked. Click Action AI is #1 for lead lists and a live browser you can watch. Four other tools, and who they fit.';
+
+const tools = [
+  {
+    rank: 1,
+    name: 'Click Action AI',
+    best: 'Best for lead generation and live visual execution',
+    icon: 'browser',
+    text: 'You describe the job. A cloud browser opens, you watch the clicks, and the result is a CSV, a Google Sheet, or a PDF. Lead Finder and 50 Gig Missions are built for lists and research. It pauses for logins and CAPTCHAs. It does not bypass them. The front-end is $36.95 once.',
+  },
+  {
+    rank: 2,
+    name: 'MultiOn',
+    best: 'Best for a developer API',
+    icon: 'bot',
+    text: 'MultiOn is a web agent aimed at developers who want an API in their own product. Pick it when you are building software around browsing, not when you want a finished lead list this afternoon.',
+  },
+  {
+    rank: 3,
+    name: 'ChatGPT with web browsing',
+    best: 'Best for simple text research, not multi-step actions',
+    icon: 'file',
+    text: 'ChatGPT can look things up and write the answer. It does not run a mission you watch and then hand you the spreadsheet. Use it for a summary. Use a browser agent when the next step is clicking.',
+  },
+  {
+    rank: 4,
+    name: 'Airtop',
+    best: 'Best for enterprise teams',
+    icon: 'users',
+    text: 'Airtop provides cloud browsers for companies building their own agents. It fits a team with engineers and a procurement process. It is not the short path for a solo operator who wants one prompt and a file.',
+  },
+  {
+    rank: 5,
+    name: 'Browse AI',
+    best: 'Best for simple data extraction, not complex workflows',
+    icon: 'list',
+    text: 'Browse AI trains robots to pull data from pages that stay similar. That is useful for a repeating extract. It is a weaker fit when the job changes every time and needs a person to step in on a checkpoint.',
+  },
+];
+
+const faqs = [
+  {
+    question: 'What is the best AI browser agent in 2026?',
+    answer:
+      'On this site’s ranking, Click Action AI is #1 for lead generation and live visual execution. You watch a real browser and export a file. MultiOn ranks higher if you need a developer API, and Airtop ranks higher for an enterprise build.',
+  },
+  {
+    question: 'How is an AI browser agent different from ChatGPT?',
+    answer:
+      'ChatGPT with browsing is for reading and writing. An AI browser agent clicks through a site and finishes a task. Click Action AI shows that work on a live screen and can pause so you can take over.',
+  },
+  {
+    question: 'Do these agents bypass CAPTCHAs?',
+    answer:
+      'Click Action AI does not. It pauses so you can complete the check and resume. A tool that claims to slip past every block is not what this ranking is recommending.',
+  },
+  {
+    question: 'Which agent should a non-developer buy?',
+    answer:
+      'Click Action AI. The others on this list lean toward APIs, enterprise setups, or fixed extractors. If you can describe the list you want, start there.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+
+const itemList = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Best AI Browser Agents in 2026',
+  itemListOrder: 'https://schema.org/ItemListOrderAscending',
+  numberOfItems: tools.length,
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Click Action AI', url: 'https://clickactionai.info/' },
+    { '@type': 'ListItem', position: 2, name: 'MultiOn', url: 'https://www.multion.ai/' },
+    { '@type': 'ListItem', position: 3, name: 'ChatGPT with Web Browsing', url: 'https://chatgpt.com/' },
+    { '@type': 'ListItem', position: 4, name: 'Airtop', url: 'https://www.airtop.ai/' },
+    { '@type': 'ListItem', position: 5, name: 'Browse AI', url: 'https://www.browse.ai/' },
+  ],
+};
+---
+
+<BaseLayout
+  title="Best AI Browser Agents in 2026 (Top 5 Ranked)"
+  description={description}
+  canonicalURL="/best-ai-browser-agents"
+  schema={[itemList, faqSchema]}
+  bodyClass="has-sticky-cta"
+>
+  <section class="page-hero" data-sticky-trigger>
+    <div class="container">
+      <Breadcrumbs
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Best AI browser agents', href: '/best-ai-browser-agents' },
+        ]}
+      />
+      <p class="eyebrow">2026 ranking</p>
+      <h1>Best AI Browser Agents in 2026 (Top 5 Ranked)</h1>
+      <p class="lede">
+        This is our ranking, not a lab test. The question is simple: does the tool click through a website you can watch, and can you leave with a file?
+      </p>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="rank-title">
+    <div class="container">
+      <h2 id="rank-title">The top 5</h2>
+      <div class="rank-list">
+        {tools.map((tool) => (
+          <article class:list={['rank-card', { 'is-top': tool.rank === 1 }]} id={tool.rank === 1 ? 'rank-1' : undefined}>
+            <div class="rank-num">{tool.rank}</div>
+            <div>
+              <div class="feature-icon"><Icon name={tool.icon} /></div>
+              <p class="rank-kicker">{tool.best}</p>
+              <h3>{tool.name}</h3>
+              <p>{tool.text}</p>
+              {tool.rank === 1 && (
+                <div class="cta-row">
+                  <AffiliateCta>Get Click Action AI →</AffiliateCta>
+                </div>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Lock in Your Access for $36.95 →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="why-title">
+    <div class="container">
+      <h2 id="why-title">Why #1 is the one you can watch</h2>
+      <p class="section-copy">
+        An API is the right buy for a product team. A chatbot is the right buy for a paragraph. If the work is “go to these sites and bring back the rows,” the tool has to show its work. Click Action AI is the one on this list built for that, with a pause when a human has to step in.
+      </p>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI + My Bonuses →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <h2 id="faq-title">Browser agent FAQ</h2>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details>
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI →</AffiliateCta>
+      </div>
+      <RelatedReading
+        items={[
+          { href: '/', title: 'Full review', text: 'The long breakdown of the #1 pick.' },
+          { href: '/click-action-ai-pricing', title: 'Pricing', text: '$36.95 once, not another agent subscription.' },
+          { href: '/click-action-ai-bonus', title: 'Bonuses', text: 'Prompts and a compliance checklist.' },
+          { href: '/what-is-an-ai-agent', title: 'What is an AI agent?', text: 'Chatbot versus something that does the task.' },
+        ]}
+      />
+    </div>
+  </section>
+
+  <StickyBar />
+</BaseLayout>

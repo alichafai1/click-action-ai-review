@@ -1,0 +1,196 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AffiliateCta from '../components/AffiliateCta.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Icon from '../components/Icon.astro';
+import RelatedReading from '../components/RelatedReading.astro';
+import StickyBar from '../components/StickyBar.astro';
+import Versus from '../components/Versus.astro';
+
+const description =
+  'Click Action AI vs Zapier: Zapier connects apps that have an API. Click Action AI clicks websites that do not. Compare setup, cost, and reach.';
+
+const rows = [
+  {
+    label: 'Setup',
+    left: 'Complex workflows. Triggers, actions, and field mapping.',
+    right: 'A simple text prompt. You describe the finished job.',
+  },
+  {
+    label: 'Cost',
+    left: 'Monthly. You pay for the plan as long as the zaps run.',
+    right: 'One-time. The front-end is $36.95. Upgrades on the cart are optional.',
+  },
+  {
+    label: 'Capability',
+    left: 'API only. If the app has no integration, the zap has nowhere to connect.',
+    right: 'Any website you can click, including sites with no API.',
+  },
+];
+
+const cases = [
+  {
+    icon: 'bot',
+    title: 'Zapier stops at the missing API',
+    text: 'A local directory, a competitor page, or a contact form often has no Zapier app. There is no trigger to select and no fields to map. The workflow cannot start.',
+  },
+  {
+    icon: 'browser',
+    title: 'Click Action AI uses the page itself',
+    text: 'It opens the site in a live browser and clicks the buttons a person would click. No integration required. You watch the run and pause if a login appears.',
+  },
+  {
+    icon: 'list',
+    title: 'Keep Zapier for app-to-app',
+    text: 'When both tools already have an integration, Zapier is the right pipe. Click Action AI is the tool for the website that was never going to have one.',
+  },
+];
+
+const faqs = [
+  {
+    question: 'Is Click Action AI a Zapier replacement?',
+    answer:
+      'No. Zapier connects apps through APIs. Click Action AI interacts with websites through a visual browser. Use Zapier when both apps have an integration. Use Click Action AI when the work lives on a site with no API.',
+  },
+  {
+    question: 'What happens in Zapier if a website has no API?',
+    answer:
+      'The zap cannot connect. You either skip that site or do the clicking yourself. Click Action AI opens the page and clicks the buttons like a person would.',
+  },
+  {
+    question: 'Which one costs less over a year?',
+    answer:
+      'Zapier is a monthly subscription. Click Action AI’s front-end is $36.95 once. If you only need app-to-app automation, Zapier can still be the better buy. If the work is browser tasks, the one-time fee is the smaller bill.',
+  },
+  {
+    question: 'Can Click Action AI pass data into my other apps the way Zapier does?',
+    answer:
+      'Its output is a file: CSV, Google Sheets, or PDF. It is not a library of native app integrations. If you need a permanent pipe between two APIs, that is still Zapier’s job.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+---
+
+<BaseLayout
+  title="Click Action AI vs. Zapier: No-Code Automation Showdown"
+  description={description}
+  canonicalURL="/click-action-ai-vs-zapier"
+  schema={faqSchema}
+  bodyClass="has-sticky-cta"
+>
+  <section class="page-hero" data-sticky-trigger>
+    <div class="container">
+      <Breadcrumbs
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Vs Zapier', href: '/click-action-ai-vs-zapier' },
+        ]}
+      />
+      <p class="eyebrow">Comparison</p>
+      <h1>Click Action AI vs. Zapier: No-Code Automation Showdown</h1>
+      <aside class="verdict solo" aria-label="Quick verdict">
+        <div>
+          <h2>Quick verdict</h2>
+          <p>Zapier connects apps via APIs. Click Action AI interacts with websites via a visual browser, including sites that have no API.</p>
+        </div>
+      </aside>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="table-title">
+    <div class="container">
+      <h2 id="table-title">Workflows on one side, a browser on the other</h2>
+      <p class="section-copy">
+        Zapier is excellent when the apps you use already speak to each other. The gap shows up the moment the work is a website with nothing to connect to.
+      </p>
+      <Versus leftName="Zapier" rightName="Click Action AI" rows={rows} />
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="case-title">
+    <div class="container">
+      <h2 id="case-title">Where Zapier fails and the browser does not</h2>
+      <div class="aha-grid">
+        {cases.map((item) => (
+          <article class="feature-card">
+            <div class="feature-icon">
+              <Icon name={item.icon} />
+            </div>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI + My Bonuses →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="pick-title">
+    <div class="container">
+      <h2 id="pick-title">Use both, for different jobs</h2>
+      <div class="split-2">
+        <article class="flag-card">
+          <div class="feature-icon">
+            <Icon name="bot" />
+          </div>
+          <h3>Build a Zap</h3>
+          <p>A form should create a row, a payment should notify a channel, or two apps already have an official integration.</p>
+        </article>
+        <article class="flag-card is-good">
+          <div class="feature-icon">
+            <Icon name="cursor" />
+          </div>
+          <h3>Run a mission</h3>
+          <p>You need names, prices, or contact fields from a website that will never offer an API. The buttons are the interface.</p>
+        </article>
+      </div>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Lock in Your Access for $36.95 →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <h2 id="faq-title">Zapier comparison FAQ</h2>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details>
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI →</AffiliateCta>
+      </div>
+      <RelatedReading
+        items={[
+          { href: '/', title: 'Full review', text: 'The browser agent, the score, and the limits.' },
+          { href: '/click-action-ai-pricing', title: 'Pricing', text: 'One-time front-end versus a monthly automation bill.' },
+          { href: '/click-action-ai-bonus', title: 'Bonuses', text: 'Prompts and a compliance checklist from this review.' },
+          { href: '/click-action-ai-vs-chatgpt', title: 'Vs ChatGPT', text: 'Instructions versus a browser that finishes the job.' },
+        ]}
+      />
+    </div>
+  </section>
+
+  <StickyBar />
+</BaseLayout>

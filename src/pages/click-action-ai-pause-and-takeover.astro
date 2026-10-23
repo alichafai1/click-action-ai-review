@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AffiliateCta from '../components/AffiliateCta.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Icon from '../components/Icon.astro';
+import PauseMockup from '../components/mockups/PauseMockup.astro';
+import RelatedReading from '../components/RelatedReading.astro';
+import StickyBar from '../components/StickyBar.astro';
+
+const description =
+  'Click Action AI Pause and Takeover stops the mission on a login, CAPTCHA, or payment page so you can step in, then resume.';
+
+const stops = [
+  { icon: 'users', title: 'A login', text: 'The agent does not type your password from the prompt. You take the browser and sign in yourself.' },
+  { icon: 'shield', title: 'A CAPTCHA', text: 'It stops. You solve the check. It does not bypass it, and it does not keep retrying a wall.' },
+  { icon: 'tag', title: 'A payment page', text: 'Sensitive checkout screens are a handoff. You decide whether money moves. The agent waits.' },
+];
+
+const faqs = [
+  {
+    question: 'What is Pause and Takeover?',
+    answer:
+      'When Click Action AI hits a login, a CAPTCHA, or a sensitive payment page, the mission pauses and a notice appears. You take the browser, finish that step, and press Resume. A normal handoff is short, about 10 seconds.',
+  },
+  {
+    question: 'Does Pause and Takeover bypass CAPTCHAs?',
+    answer:
+      'No. You complete the CAPTCHA yourself because you are the person allowed to pass it. The agent does not slip past the check or hide from the site.',
+  },
+  {
+    question: 'Why is the pause the safety feature?',
+    answer:
+      'Speed without a stop button is how an agent clicks the wrong thing. The pause keeps human judgment on the steps that matter: identity, checks, and payments.',
+  },
+  {
+    question: 'What if I am not at the screen?',
+    answer:
+      'The mission waits. It should not guess its way through a login. Come back, take over, and resume, or stop the run.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+---
+
+<BaseLayout
+  title="Click Action AI Pause & Takeover: The Ultimate Safety Feature"
+  description={description}
+  canonicalURL="/click-action-ai-pause-and-takeover"
+  schema={faqSchema}
+  bodyClass="has-sticky-cta"
+>
+  <section class="page-hero" data-sticky-trigger>
+    <div class="container">
+      <Breadcrumbs
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Pause and takeover', href: '/click-action-ai-pause-and-takeover' },
+        ]}
+      />
+      <p class="eyebrow">Feature</p>
+      <h1>Pause & Takeover: When You Need to Step In</h1>
+      <p class="lede">
+        The fear is an agent that clicks through a mistake, or dies on a CAPTCHA. This feature stops the run and hands you the browser.
+      </p>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="how-title">
+    <div class="container">
+      <h2 id="how-title">How the handoff works</h2>
+      <p class="section-copy">
+        A login, a CAPTCHA, or a payment page pauses the mission. A notice appears. You take over, finish that step, and press Resume. For a normal check, that handoff is about 10 seconds. Then the agent continues.
+      </p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-copy">
+            <p class="step-index">Paused</p>
+            <h3>The browser is yours for this step.</h3>
+            <p>You see the checkpoint. You complete it. You do not paste the password into the prompt.</p>
+          </div>
+          <PauseMockup />
+        </div>
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="why-title">
+    <div class="container">
+      <h2 id="why-title">Speed, with a person on the hard parts</h2>
+      <div class="aha-grid">
+        {stops.map((item) => (
+          <article class="feature-card">
+            <div class="feature-icon"><Icon name={item.icon} /></div>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI + My Bonuses →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <h2 id="faq-title">Pause and takeover FAQ</h2>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details>
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Lock in Your Access for $36.95 →</AffiliateCta>
+      </div>
+      <RelatedReading
+        items={[
+          { href: '/', title: 'Full review', text: 'Why the pause is one of the six core features.' },
+          { href: '/click-action-ai-pricing', title: 'Pricing', text: 'One-time access, including the safety handoff.' },
+          { href: '/click-action-ai-bonus', title: 'Bonuses', text: 'The checklist for what to do when a site blocks you.' },
+          { href: '/click-action-ai-live-browser-watch', title: 'Live Browser', text: 'See the pause happen instead of guessing.' },
+        ]}
+      />
+    </div>
+  </section>
+
+  <StickyBar note="You stay in control of the hard steps" />
+</BaseLayout>

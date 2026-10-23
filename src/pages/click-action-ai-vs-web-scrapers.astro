@@ -1,0 +1,201 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AffiliateCta from '../components/AffiliateCta.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Icon from '../components/Icon.astro';
+import RelatedReading from '../components/RelatedReading.astro';
+import StickyBar from '../components/StickyBar.astro';
+import Versus from '../components/Versus.astro';
+
+const description =
+  'Click Action AI vs traditional web scrapers: scripts break when a page changes. This agent uses a live browser and pauses so you can take over.';
+
+const rows = [
+  {
+    label: 'Anti-bot handling',
+    left: 'A script usually dies on a CAPTCHA or a block page. Fixing that means new code.',
+    right: 'It pauses. You take over, finish the check yourself, and hand the browser back. It does not bypass the wall.',
+  },
+  {
+    label: 'Setup',
+    left: 'Selectors, code, or a scraper project you maintain every time the layout moves.',
+    right: 'One text prompt. You describe the fields and the file.',
+  },
+  {
+    label: 'Export options',
+    left: 'Often a raw dump you still clean up.',
+    right: 'CSV, Google Sheets, or PDF, ready to use or send.',
+  },
+];
+
+const reasons = [
+  {
+    icon: 'browser',
+    title: 'It uses the page, not a selector',
+    text: 'A traditional scraper aims at specific tags. Move a button and the scraper misses. Click Action AI reads the live page and clicks what is there.',
+  },
+  {
+    icon: 'pause',
+    title: 'A checkpoint is a handoff',
+    text: 'CAPTCHAs and logins stop the mission on purpose. You complete them because you are allowed to. That is not a cloak, and it is not a way through a site that has refused you.',
+  },
+  {
+    icon: 'alert',
+    title: 'Hard blocks still win',
+    text: 'Some sites are built to refuse automated browsers. The live view makes that obvious. You stop, or you do that site by hand. You do not keep hammering it.',
+  },
+];
+
+const faqs = [
+  {
+    question: 'Do traditional web scrapers break when a site changes?',
+    answer:
+      'Yes. They depend on the page structure. A redesigned button, a new layout, or a CAPTCHA is enough to stop the run until someone repairs the scraper.',
+  },
+  {
+    question: 'Does Click Action AI bypass CAPTCHAs or anti-bot systems?',
+    answer:
+      'No. Pause and take over stops the mission so you can complete the check yourself and hand the browser back. It does not bypass the block, hide the browser, or keep retrying a site that has refused the visit.',
+  },
+  {
+    question: 'Why use a live browser instead of a scraper?',
+    answer:
+      'You can see the run, you do not maintain selectors, and the result can come out as a CSV, a Google Sheet, or a PDF. A scraper is still a fit for one stable site you are allowed to collect from at high volume.',
+  },
+  {
+    question: 'Is Click Action AI harder for a website to notice?',
+    answer:
+      'It clicks a visible page the way a person would, which is why it can work without a custom scraper. That is not invisibility. A site that blocks automated browsers can still stop it, and the honest response is to pause or quit.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+---
+
+<BaseLayout
+  title="Click Action AI vs. Traditional Web Scrapers"
+  description={description}
+  canonicalURL="/click-action-ai-vs-web-scrapers"
+  schema={faqSchema}
+  bodyClass="has-sticky-cta"
+>
+  <section class="page-hero" data-sticky-trigger>
+    <div class="container">
+      <Breadcrumbs
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Vs web scrapers', href: '/click-action-ai-vs-web-scrapers' },
+        ]}
+      />
+      <p class="eyebrow">Comparison</p>
+      <h1>Click Action AI vs. Traditional Web Scrapers</h1>
+      <aside class="verdict solo" aria-label="Quick verdict">
+        <div>
+          <h2>Quick verdict</h2>
+          <p>
+            Traditional scrapers break when a website changes or shows a CAPTCHA. Click Action AI opens a live browser and pauses so you can take over. It does not bypass the block. You finish the check, then the mission continues.
+          </p>
+        </div>
+      </aside>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="table-title">
+    <div class="container">
+      <h2 id="table-title">A script next to a browser you can see</h2>
+      <p class="section-copy">
+        Scrapers are built for volume on a page that stays still. The agent is built for a job you can describe, watch, and export without maintaining selectors.
+      </p>
+      <Versus leftName="Traditional scraper" rightName="Click Action AI" rows={rows} />
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="wins-title">
+    <div class="container">
+      <h2 id="wins-title">Why the live browser wins on ordinary sites</h2>
+      <p class="section-copy">
+        It behaves like a person at the keyboard: it looks at the page and clicks what is on it. That is why a moved button does not require a code fix. It is not a disguise, and a site that does not want automated visits can still stop the run.
+      </p>
+      <div class="aha-grid">
+        {reasons.map((item) => (
+          <article class="feature-card">
+            <div class="feature-icon">
+              <Icon name={item.icon} />
+            </div>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI + My Bonuses →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="pick-title">
+    <div class="container">
+      <h2 id="pick-title">Pick the tool that matches the site</h2>
+      <div class="split-2">
+        <article class="flag-card">
+          <div class="feature-icon">
+            <Icon name="bot" />
+          </div>
+          <h3>Keep the scraper</h3>
+          <p>One stable site, a layout you control or are allowed to collect from, and a need for the same extract on a schedule.</p>
+        </article>
+        <article class="flag-card is-good">
+          <div class="feature-icon">
+            <Icon name="eye" />
+          </div>
+          <h3>Use the agent</h3>
+          <p>Different sites, a list you can describe in a sentence, and a result you want to watch being built.</p>
+        </article>
+      </div>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Lock in Your Access for $36.95 →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <h2 id="faq-title">Scraper comparison FAQ</h2>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details>
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI →</AffiliateCta>
+      </div>
+      <RelatedReading
+        items={[
+          { href: '/', title: 'Full review', text: 'Live Watch, Lead Finder, and the pause feature.' },
+          { href: '/click-action-ai-pricing', title: 'Pricing', text: 'How $36.95 compares with another scraper subscription.' },
+          { href: '/click-action-ai-bonus', title: 'Bonuses', text: 'The compliance checklist for running tasks without breaking site rules.' },
+          { href: '/click-action-ai-vs-virtual-assistants', title: 'Vs a VA', text: 'The first-month math against a $500 hire.' },
+        ]}
+      />
+    </div>
+  </section>
+
+  <StickyBar />
+</BaseLayout>

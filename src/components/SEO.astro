@@ -1,0 +1,45 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  canonicalURL?: string | URL;
+  ogImage?: string;
+  ogType?: string;
+  schema?: Record<string, unknown> | Record<string, unknown>[];
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  canonicalURL,
+  ogImage,
+  ogType = 'website',
+  schema,
+  noindex = false,
+} = Astro.props;
+
+const site = Astro.site ?? new URL('https://clickactionai.info');
+const canonical = new URL(canonicalURL ?? Astro.url.pathname, site);
+const image = ogImage ? new URL(ogImage, site) : undefined;
+const schemas = schema == null ? [] : Array.isArray(schema) ? schema : [schema];
+const jsonLd = schemas.map((entry) => JSON.stringify(entry).replace(/</g, '\\u003c'));
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical.href} />
+<meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical.href} />
+<meta property="og:type" content={ogType} />
+<meta property="og:site_name" content="Click Action AI Review" />
+{image && <meta property="og:image" content={image.href} />}
+<meta name="twitter:card" content={image ? 'summary_large_image' : 'summary'} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+{image && <meta name="twitter:image" content={image.href} />}
+{jsonLd.map((entry) => (
+  <script is:inline type="application/ld+json" set:html={entry} />
+))}

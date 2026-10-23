@@ -1,0 +1,26 @@
+---
+interface Props {
+  prompt?: string;
+}
+
+const { prompt = 'Find 50 plumbers in Austin and put them in a CSV' } = Astro.props;
+---
+
+<figure class="mock">
+  <figcaption class="mock-top">
+    <span class="mock-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span>Click Action AI</span>
+    <span class="mock-tag">Example</span>
+  </figcaption>
+  <div class="mock-screen">
+    <p class="mock-label">What should the agent do?</p>
+    <div class="mock-input">
+      <p>{prompt}</p>
+    </div>
+    <div class="mock-chips" aria-hidden="true">
+      <span>Lead Finder</span>
+      <span>Export CSV</span>
+    </div>
+    <div class="mock-run">Run mission</div>
+  </div>
+</figure>

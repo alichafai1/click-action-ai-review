@@ -1,0 +1,181 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AffiliateCta from '../components/AffiliateCta.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Icon from '../components/Icon.astro';
+import RelatedReading from '../components/RelatedReading.astro';
+import StickyBar from '../components/StickyBar.astro';
+
+const description =
+  'How to automate lead generation in 2026: define a niche and a city, let an AI agent visit public directories, extract the contacts, and export to your CRM.';
+
+const steps = [
+  {
+    name: 'Define your target',
+    text: 'Pick one niche and one city, and write down the fields you need, such as business name, phone, website, and a contact-page URL.',
+    icon: 'search',
+  },
+  {
+    name: 'Use an AI agent to visit directories',
+    text: 'Give Click Action AI that target and let it open public directories and business sites. Do not point it at LinkedIn or a private database.',
+    icon: 'browser',
+  },
+  {
+    name: 'Extract names and contacts',
+    text: 'The agent copies the published name, phone, and website into rows. It should not guess email addresses that are not on the page.',
+    icon: 'list',
+  },
+  {
+    name: 'Export to your CRM',
+    text: 'Download the CSV or send it to Google Sheets, then import that file into your CRM. Check the rows before anyone gets a message.',
+    icon: 'download',
+  },
+];
+
+const faqs = [
+  {
+    question: 'How do you automate lead generation?',
+    answer:
+      'Define a niche and a city, use an AI agent such as Click Action AI to visit public directories, extract the published names and contacts, and export the file into your CRM. Check the sheet before you contact anyone.',
+  },
+  {
+    question: 'What is the old way?',
+    answer:
+      'Search, open a listing, copy the name, hunt for a phone, paste it, and repeat. That is a person’s afternoon. The new way is one prompt and a file you review.',
+  },
+  {
+    question: 'Can this scrape LinkedIn?',
+    answer:
+      'No. This guide is for public directories and business websites. LinkedIn blocks automated browsing, and Sales Navigator is a manual tool. Stay on pages that publish the contact.',
+  },
+  {
+    question: 'Is a CSV the same as permission to email?',
+    answer:
+      'No. A list of published business details is a research file. Email only where the law that applies to you allows it, and do not invent addresses.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How to Automate Lead Generation',
+  description:
+    'Define a niche and a city, visit public directories with an AI agent, extract published contacts, and export the file to a CRM.',
+  step: steps.map((step, index) => ({
+    '@type': 'HowToStep',
+    position: index + 1,
+    name: step.name,
+    text: step.text,
+  })),
+};
+---
+
+<BaseLayout
+  title="How to Automate Lead Generation in 2026 (Step-by-Step)"
+  description={description}
+  canonicalURL="/how-to-automate-lead-generation"
+  schema={[howToSchema, faqSchema]}
+  bodyClass="has-sticky-cta"
+>
+  <section class="page-hero" data-sticky-trigger>
+    <div class="container">
+      <Breadcrumbs
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Automate lead generation', href: '/how-to-automate-lead-generation' },
+        ]}
+      />
+      <p class="eyebrow">Guide · 2026</p>
+      <h1>How to Automate Lead Generation in 2026 (Step-by-Step)</h1>
+      <p class="lede">
+        The old way is copy and paste. The new way is an agent that visits public pages and hands you a file. Here is the sequence that stays inside the rules.
+      </p>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="old-title">
+    <div class="container">
+      <h2 id="old-title">Old way, new way</h2>
+      <div class="split-2">
+        <article class="flag-card is-bad">
+          <div class="feature-icon"><Icon name="alert" /></div>
+          <h3>Manual</h3>
+          <p>A search, a tab, a highlight, a cell. Fifty leads is a lost afternoon, and the sheet still has gaps you typed wrong.</p>
+        </article>
+        <article class="flag-card is-good">
+          <div class="feature-icon"><Icon name="browser" /></div>
+          <h3>An AI agent</h3>
+          <p>You name the niche and the city. Click Action AI opens the directories, reads the published fields, and exports. You review. You do not retype.</p>
+        </article>
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="steps-title">
+    <div class="container">
+      <h2 id="steps-title">Four steps</h2>
+      <ol class="steps">
+        {steps.map((step, index) => (
+          <li class="step">
+            <div class="step-copy">
+              <p class="step-index">Step {index + 1}</p>
+              <h3>{step.name}</h3>
+              <p>{step.text}</p>
+            </div>
+            <article class="feature-card">
+              <div class="feature-icon"><Icon name={step.icon} /></div>
+              <h3>Step {index + 1}</h3>
+              <p>{step.name}</p>
+            </article>
+          </li>
+        ))}
+      </ol>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI + My Bonuses →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <h2 id="faq-title">Lead generation guide FAQ</h2>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details>
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Lock in Your Access for $36.95 →</AffiliateCta>
+      </div>
+      <RelatedReading
+        items={[
+          { href: '/', title: 'Full review', text: 'The agent this guide uses.' },
+          { href: '/click-action-ai-pricing', title: 'Pricing', text: 'One-time access instead of a database plan.' },
+          { href: '/click-action-ai-bonus', title: 'Bonuses', text: 'Ready prompts for the first step.' },
+          { href: '/click-action-ai-lead-finder-mode', title: 'Lead Finder', text: 'The feature that runs step 2 and 3.' },
+        ]}
+      />
+    </div>
+  </section>
+
+  <StickyBar note="Niche, city, then a file" />
+</BaseLayout>

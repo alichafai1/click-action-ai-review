@@ -1,0 +1,199 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AffiliateCta from '../components/AffiliateCta.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Icon from '../components/Icon.astro';
+import RelatedReading from '../components/RelatedReading.astro';
+import StickyBar from '../components/StickyBar.astro';
+import Versus from '../components/Versus.astro';
+
+const description =
+  'Click Action AI vs ChatGPT: one writes the answer, the other opens a browser and does the task. See the difference in output, access, and execution.';
+
+const rows = [
+  {
+    label: 'Output',
+    left: 'Text. Drafts, ideas, and a list of steps.',
+    right: 'Action. A browser task that ends in a file.',
+  },
+  {
+    label: 'Browser access',
+    left: 'No live mission. Some plans can look things up. You still do the clicking.',
+    right: 'Yes. A cloud browser opens, and you watch every click.',
+  },
+  {
+    label: 'Task execution',
+    left: 'Manual. You copy the answer into the sheet yourself.',
+    right: 'Automated. It clicks, types, and exports the result.',
+  },
+];
+
+const moments = [
+  {
+    icon: 'file',
+    title: 'ChatGPT tells you how',
+    text: 'Ask for plumbers in Austin and you get a method, a search tip, or a made-up sample table. The job is still sitting in the browser.',
+  },
+  {
+    icon: 'cursor',
+    title: 'You still do the work',
+    text: 'You open the tabs, visit each site, copy the phone number, and paste it into a spreadsheet. The chat is finished. The list is not.',
+  },
+  {
+    icon: 'search',
+    title: 'Click Action AI goes and gets it',
+    text: 'The same request becomes a mission. The live browser searches, opens the listings, and writes the CSV.',
+  },
+];
+
+const faqs = [
+  {
+    question: 'Can ChatGPT replace Click Action AI?',
+    answer:
+      'No. ChatGPT is built to generate text and ideas. Click Action AI is built to execute a task in a real browser and hand you a file. Use ChatGPT when you need words. Use Click Action AI when you need the clicking done.',
+  },
+  {
+    question: 'Does ChatGPT have any browser access?',
+    answer:
+      'Some ChatGPT plans can look information up on the web. That is not the same as opening a live browser, clicking through a site, and exporting the rows. The execution is still yours.',
+  },
+  {
+    question: 'What is the aha moment between ChatGPT and Click Action AI?',
+    answer:
+      'ChatGPT tells you how to find leads. Click Action AI goes and finds them. One ends in instructions. The other ends in a CSV, a Google Sheet, or a PDF.',
+  },
+  {
+    question: 'Do I still need a clear prompt for Click Action AI?',
+    answer:
+      'Yes. Name the niche, the place, the fields, and the file you want back. A vague sentence produces a vague mission, the same way a vague question produces a vague chat answer.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+---
+
+<BaseLayout
+  title="Click Action AI vs. ChatGPT: The AI That Actually Does the Work"
+  description={description}
+  canonicalURL="/click-action-ai-vs-chatgpt"
+  schema={faqSchema}
+  bodyClass="has-sticky-cta"
+>
+  <section class="page-hero" data-sticky-trigger>
+    <div class="container">
+      <Breadcrumbs
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Vs ChatGPT', href: '/click-action-ai-vs-chatgpt' },
+        ]}
+      />
+      <p class="eyebrow">Comparison</p>
+      <h1>Click Action AI vs. ChatGPT: The AI That Actually Does the Work</h1>
+      <aside class="verdict solo" aria-label="Quick verdict">
+        <div>
+          <h2>Quick verdict</h2>
+          <p>ChatGPT is for generating text and ideas. Click Action AI is for executing tasks in a real browser.</p>
+        </div>
+      </aside>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="table-title">
+    <div class="container">
+      <h2 id="table-title">Text on one side, a finished task on the other</h2>
+      <p class="section-copy">
+        Both tools take a sentence from you. They do not return the same kind of work. One stops when the paragraph is done. The other stops when the browser job is done.
+      </p>
+      <Versus leftName="ChatGPT" rightName="Click Action AI" rows={rows} />
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="aha-title">
+    <div class="container">
+      <h2 id="aha-title">The aha moment</h2>
+      <p class="section-copy">
+        ChatGPT tells you how to find leads. Click Action AI goes and finds them for you. That is the whole difference between an answer and a result.
+      </p>
+      <div class="aha-grid">
+        {moments.map((item) => (
+          <article class="feature-card">
+            <div class="feature-icon">
+              <Icon name={item.icon} />
+            </div>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI + My Bonuses →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="pick-title">
+    <div class="container">
+      <h2 id="pick-title">Which one to open</h2>
+      <div class="split-2">
+        <article class="flag-card">
+          <div class="feature-icon">
+            <Icon name="file" />
+          </div>
+          <h3>Stay with ChatGPT</h3>
+          <p>You need a draft, a headline, a plan, or an explanation. Nothing has to be clicked on a website.</p>
+        </article>
+        <article class="flag-card is-good">
+          <div class="feature-icon">
+            <Icon name="browser" />
+          </div>
+          <h3>Switch to Click Action AI</h3>
+          <p>The next step is a search, a list, a form, or a sheet. You want the file, not another set of instructions.</p>
+        </article>
+      </div>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <h2 id="faq-title">ChatGPT comparison FAQ</h2>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details>
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Lock in Your Access for $36.95 →</AffiliateCta>
+      </div>
+      <RelatedReading
+        items={[
+          { href: '/', title: 'Full review', text: 'How the agent works, the score, and who it is for.' },
+          { href: '/click-action-ai-pricing', title: 'Pricing', text: 'The $36.95 front-end, next to a VA and a scraper.' },
+          { href: '/click-action-ai-bonus', title: 'Bonuses', text: 'The swipe file and the compliance checklist.' },
+          { href: '/click-action-ai-vs-zapier', title: 'Vs Zapier', text: 'What happens when a website has no API.' },
+        ]}
+      />
+    </div>
+  </section>
+
+  <StickyBar />
+</BaseLayout>

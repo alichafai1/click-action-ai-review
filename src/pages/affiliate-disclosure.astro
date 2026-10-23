@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const description =
+  'Affiliate disclosure for Click Action AI Review. This site may earn a commission on JVZoo purchases made through its links, at no extra cost to you.';
+---
+
+<BaseLayout
+  title="Affiliate Disclosure"
+  description={description}
+  canonicalURL="/affiliate-disclosure"
+>
+  <section class="page-hero">
+    <div class="container">
+      <Breadcrumbs
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Affiliate disclosure', href: '/affiliate-disclosure' },
+        ]}
+      />
+      <p class="eyebrow">Legal</p>
+      <h1>Affiliate disclosure</h1>
+      <p class="lede">Last updated October 23, 2026.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="section-copy">
+        Click Action AI Review, at clickactionai.info, is an independent review site. We are not Click Action AI, and we are not JVZoo. The opinions on this site are ours.
+      </p>
+      <h2>The affiliate relationship</h2>
+      <p class="section-copy">
+        Some links on this site are affiliate links for Click Action AI through JVZoo. If you buy through one of those links, we may earn a commission from the vendor. You do not pay extra because you used our link. The price you see on the JVZoo checkout is the price of the order.
+      </p>
+      <p class="section-copy">
+        The tracked offer link used by the green buttons is the JVZoo affiliate URL for this review. A purchase made outside those links is not tied to this site.
+      </p>
+      <h2>What that does and does not change</h2>
+      <p class="section-copy">
+        A commission can create a bias. We still describe limits on these pages: the agent needs a clear prompt, it pauses for logins and CAPTCHAs, and some sites block automated browsers. The review score is an editorial score from this site, not a count of customer reviews.
+      </p>
+      <p class="section-copy">
+        The seller is the vendor. Refund terms, delivery, and product support are controlled by the vendor and shown on the JVZoo order page. Read that page before you pay. Questions about a charge belong with the vendor and JVZoo.
+      </p>
+      <h2>Bonuses from this review</h2>
+      <p class="section-copy">
+        The swipe file and compliance checklist are bonuses from this site, not downloads inside the vendor dashboard. To claim them, buy through a button on this site and email the receipt to bonuses@clickactionaireview.com. We use that email only to match the order and send the files.
+      </p>
+      <p class="section-copy">
+        <a class="text-link" href="/privacy-policy">Privacy policy</a>
+        {' · '}
+        <a class="text-link" href="/terms">Terms</a>
+        {' · '}
+        <a class="text-link" href="/">Back to the review</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>

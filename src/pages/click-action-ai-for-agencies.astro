@@ -1,0 +1,170 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AffiliateCta from '../components/AffiliateCta.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Icon from '../components/Icon.astro';
+import RelatedReading from '../components/RelatedReading.astro';
+import StickyBar from '../components/StickyBar.astro';
+
+const description =
+  'Click Action AI for agencies: use Lead Finder and exports to take research and list-building off the team without adding a hire.';
+
+const jobs = [
+  { icon: 'search', title: 'Client research', text: 'A niche and a city become a first-pass list instead of an afternoon of tabs.' },
+  { icon: 'list', title: 'Lead Finder', text: 'Ask for the prospects, the fields, and the file. The browser does the visiting.' },
+  { icon: 'download', title: 'Client-ready export', text: 'CSV, Google Sheets, or PDF. The account lead still checks it before it goes to the client.' },
+];
+
+const steps = [
+  { icon: 'cursor', title: 'Brief it like a junior', text: 'Name the client’s niche, the market, the fields, and the format. “40 dentists in Tampa with site and phone, CSV” is a brief.' },
+  { icon: 'eye', title: 'Watch one run', text: 'Live Watch shows the clicks. If a directory asks for a login, pause and decide. Do not leave a mission unattended on a client account.' },
+  { icon: 'users', title: 'Reuse the pattern', text: 'The next client is the same shape of job with different words. That is how a small team covers more campaigns. It is not automatic headcount.' },
+];
+
+const faqs = [
+  {
+    question: 'Can an agency run more campaigns with the same team?',
+    answer:
+      'Yes, for the repetitive browser work: research, lead lists, and data entry. People talk about covering far more campaigns, sometimes on the order of ten times, when that work stops eating the week. It is not a guaranteed multiple, and it does not cover strategy, creative, or client calls.',
+  },
+  {
+    question: 'What should the agency still do by hand?',
+    answer:
+      'Check the export, write the recommendation, and handle anything behind a login you should not automate. The agent drafts the raw list. The team decides what is true enough to send.',
+  },
+  {
+    question: 'Does Lead Finder replace a researcher?',
+    answer:
+      'It replaces the clicking. A researcher still writes the brief and reviews the rows. Reference prices on Gig Missions are suggestions for what you might charge a client, not revenue the software creates.',
+  },
+  {
+    question: 'How does an agency get the files out?',
+    answer:
+      'Export to CSV, Google Sheets, or PDF. Put the sheet in the client folder you already use. The agent does not log into your project-management tool unless you pause and do that step yourself.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+---
+
+<BaseLayout
+  title="Click Action AI for Agencies: Scale Client Work Without Hiring"
+  description={description}
+  canonicalURL="/click-action-ai-for-agencies"
+  schema={faqSchema}
+  bodyClass="has-sticky-cta"
+>
+  <section class="page-hero" data-sticky-trigger>
+    <div class="container">
+      <Breadcrumbs
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'For agencies', href: '/click-action-ai-for-agencies' },
+        ]}
+      />
+      <p class="eyebrow">Use case</p>
+      <h1>Click Action AI for Agencies: Scale Client Work Without Hiring</h1>
+      <p class="lede">
+        Agencies drown in the same tasks: research, lead lists, and data entry, repeated for every retainer. The agent takes that clicking. The team keeps the judgment.
+      </p>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="jobs-title">
+    <div class="container">
+      <h2 id="jobs-title">Where the hours actually go</h2>
+      <div class="aha-grid">
+        {jobs.map((item) => (
+          <article class="feature-card">
+            <div class="feature-icon"><Icon name={item.icon} /></div>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="scale-title">
+    <div class="container">
+      <h2 id="scale-title">Same team, more campaigns</h2>
+      <p class="section-copy">
+        A small team can take on more client work when list-building is a mission instead of a person’s afternoon. That is the “10x” idea: the same people, far more campaigns, because the repetitive part moved. Treat it as a ceiling for browser work, not a promise. Strategy, creative, and calls still take human time. A site that blocks bots still stops the run.
+      </p>
+      <div class="aha-grid">
+        {steps.map((item) => (
+          <article class="feature-card">
+            <div class="feature-icon"><Icon name={item.icon} /></div>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI + My Bonuses →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="fit-title">
+    <div class="container">
+      <h2 id="fit-title">A fit, and a skip</h2>
+      <div class="split-2">
+        <article class="flag-card is-good">
+          <div class="feature-icon"><Icon name="search" /></div>
+          <h3>Use it</h3>
+          <p>Retainers that start with “who is in this market” and end with a sheet the strategist can mark up.</p>
+        </article>
+        <article class="flag-card is-bad">
+          <div class="feature-icon"><Icon name="alert" /></div>
+          <h3>Do not use it</h3>
+          <p>As a silent employee, or inside a client login you are not supposed to automate. Pause, or do that part yourself.</p>
+        </article>
+      </div>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Lock in Your Access for $36.95 →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <h2 id="faq-title">Agency FAQ</h2>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details>
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI →</AffiliateCta>
+      </div>
+      <RelatedReading
+        items={[
+          { href: '/', title: 'Full review', text: 'How Lead Finder, Live Watch, and exports work.' },
+          { href: '/click-action-ai-pricing', title: 'Pricing', text: '$36.95 once, compared with another monthly hire.' },
+          { href: '/click-action-ai-bonus', title: 'Bonuses', text: 'Fifty prompts you can reuse across client briefs.' },
+          { href: '/click-action-ai-for-lead-generation', title: 'For lead generation', text: 'The same list-building job, outside an agency.' },
+        ]}
+      />
+    </div>
+  </section>
+
+  <StickyBar note="For the research your team repeats" />
+</BaseLayout>

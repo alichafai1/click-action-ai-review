@@ -1,0 +1,41 @@
+---
+interface Crumb {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  items: Crumb[];
+}
+
+const { items } = Astro.props;
+const site = Astro.site ?? new URL('https://clickactionai.info');
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: items.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.label,
+    ...(item.href ? { item: new URL(item.href, site).href } : {}),
+  })),
+};
+
+const jsonLd = JSON.stringify(schema).replace(/</g, '\\u003c');
+---
+
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <ol>
+    {items.map((item, index) => {
+      const isLast = index === items.length - 1;
+      return (
+        <li>
+          {item.href && !isLast ? <a href={item.href}>{item.label}</a> : <span aria-current="page">{item.label}</span>}
+          {!isLast && <span aria-hidden="true"> / </span>}
+        </li>
+      );
+    })}
+  </ol>
+</nav>
+<script is:inline type="application/ld+json" set:html={jsonLd} />

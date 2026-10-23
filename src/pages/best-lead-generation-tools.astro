@@ -1,0 +1,190 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AffiliateCta from '../components/AffiliateCta.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Icon from '../components/Icon.astro';
+import RelatedReading from '../components/RelatedReading.astro';
+import StickyBar from '../components/StickyBar.astro';
+
+const description =
+  'Top 5 B2B lead generation tools in 2026. Click Action AI is #1 for public local lists and a CSV, without a monthly database seat.';
+
+const tools = [
+  {
+    rank: 1,
+    name: 'Click Action AI',
+    best: 'Best for automated local lead finding and CSV export',
+    icon: 'search',
+    text: 'Type a niche and a city. It visits public listings, copies published names, websites, and phone numbers, and exports a CSV. The front-end is $36.95 once. It does not include a private email database, and it does not scrape LinkedIn.',
+  },
+  {
+    rank: 2,
+    name: 'Apollo.io',
+    best: 'Best for email databases',
+    icon: 'mail',
+    text: 'Apollo is a large B2B contact database with a monthly plan. Use it when you need a searchable pool of people and emails. You are paying for the database, not for a browser you watch.',
+  },
+  {
+    rank: 3,
+    name: 'LinkedIn Sales Navigator',
+    best: 'Best for manual outreach',
+    icon: 'users',
+    text: 'Sales Navigator is a search tool inside LinkedIn. You still filter, open profiles, and write the messages. It is a seat you pay for every month, and automated scraping of LinkedIn is a bad idea.',
+  },
+  {
+    rank: 4,
+    name: 'Hunter.io',
+    best: 'Best for finding email addresses',
+    icon: 'mail',
+    text: 'Hunter looks up email patterns and addresses tied to a domain. It is the tool after you already know the company. It does not walk a city directory and build the company list for you.',
+  },
+  {
+    rank: 5,
+    name: 'UpLead',
+    best: 'Best for verified data',
+    icon: 'shield',
+    text: 'UpLead sells verified B2B contacts on a subscription. Choose it when a checked email is the product you are buying. It is a different job from visiting public pages and exporting what they show.',
+  },
+];
+
+const faqs = [
+  {
+    question: 'What is the best lead generation tool for public listings?',
+    answer:
+      'On this ranking, Click Action AI. It visits public pages and exports a CSV for a one-time front-end of $36.95. Apollo, Hunter, and UpLead are better when you are buying access to an email database.',
+  },
+  {
+    question: 'Why not pay for a monthly lead database?',
+    answer:
+      'A database is worth it when you need verified emails at scale. It is expensive for “plumbers in Austin” style lists that are already on public sites. Click Action AI collects those published fields without another monthly seat.',
+  },
+  {
+    question: 'Does Click Action AI replace LinkedIn Sales Navigator?',
+    answer:
+      'No. Sales Navigator is for searching and messaging on LinkedIn by hand. Click Action AI is for public websites and directories. Do not point it at LinkedIn and expect a scrape.',
+  },
+  {
+    question: 'Will the CSV include personal emails?',
+    answer:
+      'Only if that address is published on the page. The agent should not guess inboxes. Hunter or a verified database is the tool if email finding is the whole job.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+
+const itemList = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Top 5 Lead Generation Tools for B2B in 2026',
+  itemListOrder: 'https://schema.org/ItemListOrderAscending',
+  numberOfItems: 5,
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Click Action AI', url: 'https://clickactionai.info/' },
+    { '@type': 'ListItem', position: 2, name: 'Apollo.io', url: 'https://www.apollo.io/' },
+    { '@type': 'ListItem', position: 3, name: 'LinkedIn Sales Navigator', url: 'https://business.linkedin.com/sales-solutions/sales-navigator' },
+    { '@type': 'ListItem', position: 4, name: 'Hunter.io', url: 'https://hunter.io/' },
+    { '@type': 'ListItem', position: 5, name: 'UpLead', url: 'https://www.uplead.com/' },
+  ],
+};
+---
+
+<BaseLayout
+  title="Top 5 Lead Generation Tools for B2B in 2026"
+  description={description}
+  canonicalURL="/best-lead-generation-tools"
+  schema={[itemList, faqSchema]}
+  bodyClass="has-sticky-cta"
+>
+  <section class="page-hero" data-sticky-trigger>
+    <div class="container">
+      <Breadcrumbs
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Best lead generation tools', href: '/best-lead-generation-tools' },
+        ]}
+      />
+      <p class="eyebrow">2026 ranking</p>
+      <h1>Top 5 Lead Generation Tools for B2B in 2026</h1>
+      <p class="lede">
+        Databases sell you a login. This ranking puts the browser agent first when the leads are already on public pages and you want a CSV, not another monthly seat.
+      </p>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="rank-title">
+    <div class="container">
+      <h2 id="rank-title">The top 5</h2>
+      <div class="rank-list">
+        {tools.map((tool) => (
+          <article class:list={['rank-card', { 'is-top': tool.rank === 1 }]}>
+            <div class="rank-num">{tool.rank}</div>
+            <div>
+              <div class="feature-icon"><Icon name={tool.icon} /></div>
+              <p class="rank-kicker">{tool.best}</p>
+              <h3>{tool.name}</h3>
+              <p>{tool.text}</p>
+              {tool.rank === 1 && (
+                <div class="cta-row">
+                  <AffiliateCta>Get Click Action AI →</AffiliateCta>
+                </div>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Lock in Your Access for $36.95 →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="why-title">
+    <div class="container">
+      <h2 id="why-title">Public listings, without the monthly bill</h2>
+      <p class="section-copy">
+        Apollo, Hunter, and UpLead charge for a database you search. Sales Navigator charges for a seat you work by hand. Click Action AI is the better buy when the names, phones, and websites are published on directories and business sites. You pay $36.95 once, run the mission, and export. You do not get their private email graphs, and you should not pretend a CSV of public phones is a verified inbox list.
+      </p>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI + My Bonuses →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <h2 id="faq-title">Lead tool FAQ</h2>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details>
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI →</AffiliateCta>
+      </div>
+      <RelatedReading
+        items={[
+          { href: '/', title: 'Full review', text: 'Lead Finder, exports, and the limits.' },
+          { href: '/click-action-ai-pricing', title: 'Pricing', text: 'One-time fee versus a database subscription.' },
+          { href: '/click-action-ai-bonus', title: 'Bonuses', text: 'Lead prompts and the compliance checklist.' },
+          { href: '/how-to-automate-lead-generation', title: 'How to automate it', text: 'Four steps from a niche to a CRM file.' },
+        ]}
+      />
+    </div>
+  </section>
+
+  <StickyBar note="Public lists. One-time fee." />
+</BaseLayout>

@@ -1,0 +1,183 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AffiliateCta from '../components/AffiliateCta.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Icon from '../components/Icon.astro';
+import RelatedReading from '../components/RelatedReading.astro';
+import StickyBar from '../components/StickyBar.astro';
+
+const description =
+  'Top ChatGPT alternatives for automation in 2026. Click Action AI ranks #1 for taking action in a live browser you can watch.';
+
+const tools = [
+  {
+    rank: 1,
+    name: 'Click Action AI',
+    best: 'Best for taking action on a live browser',
+    icon: 'browser',
+    text: 'It opens a cloud browser, clicks through the job, and exports a file. You can watch it and pause it. ChatGPT would have stopped at the instructions.',
+  },
+  {
+    rank: 2,
+    name: 'AutoGPT',
+    best: 'Best for open-source developers',
+    icon: 'bot',
+    text: 'AutoGPT is an open-source project. You install it, bring your own model access, and wire the pieces. That is the right pile of work if you want to build. It is the wrong pile if you wanted a list today.',
+  },
+  {
+    rank: 3,
+    name: 'AgentGPT',
+    best: 'Best for simple web-based tasks',
+    icon: 'cursor',
+    text: 'AgentGPT lets you give a goal in the browser and watch an agent try to break it into steps. It is approachable for smaller experiments. It is less of a product for a watched commercial browser and a client-ready export.',
+  },
+];
+
+const faqs = [
+  {
+    question: 'What is the best ChatGPT alternative for automation?',
+    answer:
+      'On this list, Click Action AI, because it takes action in a live browser and exports the result. AutoGPT is the pick if you want open-source code. AgentGPT is the pick for a lighter in-browser experiment.',
+  },
+  {
+    question: 'Is ChatGPT an automation tool?',
+    answer:
+      'ChatGPT talks. It drafts, explains, and can look information up. These alternatives are for doing: opening pages, clicking, and producing a file. Use ChatGPT when the deliverable is words.',
+  },
+  {
+    question: 'Do I need to code to use Click Action AI?',
+    answer:
+      'No. You type a prompt or pick a Gig Mission. AutoGPT is the option that expects a developer setup.',
+  },
+  {
+    question: 'Can these tools run without any human?',
+    answer:
+      'No tool on this list should be left alone on a login, a CAPTCHA, or a payment page. Click Action AI pauses so you can take over. That is a feature, not a failure.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+
+const itemList = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Top ChatGPT Alternatives for Automation in 2026',
+  itemListOrder: 'https://schema.org/ItemListOrderAscending',
+  numberOfItems: 3,
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Click Action AI', url: 'https://clickactionai.info/' },
+    { '@type': 'ListItem', position: 2, name: 'AutoGPT', url: 'https://agpt.co/' },
+    { '@type': 'ListItem', position: 3, name: 'AgentGPT', url: 'https://agentgpt.reworkd.ai/' },
+  ],
+};
+---
+
+<BaseLayout
+  title="Top ChatGPT Alternatives for Automation (2026)"
+  description={description}
+  canonicalURL="/chatgpt-alternatives-for-automation"
+  schema={[itemList, faqSchema]}
+  bodyClass="has-sticky-cta"
+>
+  <section class="page-hero" data-sticky-trigger>
+    <div class="container">
+      <Breadcrumbs
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'ChatGPT alternatives', href: '/chatgpt-alternatives-for-automation' },
+        ]}
+      />
+      <p class="eyebrow">2026 ranking</p>
+      <h1>Top ChatGPT Alternatives for Automation (2026)</h1>
+      <p class="lede">
+        ChatGPT is for talking. The tools below are for doing. This ranking is about who actually moves through a task, not who writes the nicest paragraph.
+      </p>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="rank-title">
+    <div class="container">
+      <h2 id="rank-title">The three that do, not just talk</h2>
+      <div class="rank-list">
+        {tools.map((tool) => (
+          <article class:list={['rank-card', { 'is-top': tool.rank === 1 }]}>
+            <div class="rank-num">{tool.rank}</div>
+            <div>
+              <div class="feature-icon"><Icon name={tool.icon} /></div>
+              <p class="rank-kicker">{tool.best}</p>
+              <h3>{tool.name}</h3>
+              <p>{tool.text}</p>
+              {tool.rank === 1 && (
+                <div class="cta-row">
+                  <AffiliateCta>Get Click Action AI →</AffiliateCta>
+                </div>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI + My Bonuses →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="split-title">
+    <div class="container">
+      <h2 id="split-title">Talking versus doing</h2>
+      <div class="split-2">
+        <article class="flag-card">
+          <div class="feature-icon"><Icon name="file" /></div>
+          <h3>ChatGPT</h3>
+          <p>You ask how to find 50 leads. You get a method. The browser is still closed.</p>
+        </article>
+        <article class="flag-card is-good">
+          <div class="feature-icon"><Icon name="browser" /></div>
+          <h3>An agent</h3>
+          <p>You ask for the 50 leads. A browser opens, the rows get collected, and you export the file.</p>
+        </article>
+      </div>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Lock in Your Access for $36.95 →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <h2 id="faq-title">Automation alternative FAQ</h2>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details>
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI →</AffiliateCta>
+      </div>
+      <RelatedReading
+        items={[
+          { href: '/', title: 'Full review', text: 'Why this site ranks the live browser first.' },
+          { href: '/click-action-ai-pricing', title: 'Pricing', text: 'What you pay once, instead of assembling an open-source stack.' },
+          { href: '/click-action-ai-bonus', title: 'Bonuses', text: 'Prompts for the jobs you will actually run.' },
+          { href: '/click-action-ai-vs-chatgpt', title: 'Vs ChatGPT', text: 'The direct comparison, output by output.' },
+        ]}
+      />
+    </div>
+  </section>
+
+  <StickyBar />
+</BaseLayout>

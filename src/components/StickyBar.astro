@@ -1,0 +1,31 @@
+---
+import AffiliateCta from './AffiliateCta.astro';
+
+interface Props {
+  note?: string;
+  label?: string;
+}
+
+const { note = 'One-time front-end access, $36.95', label = 'Get Click Action AI →' } = Astro.props;
+---
+
+<div class="sticky-cta" data-sticky-cta>
+  <p>
+    Click Action AI
+    <span>{note}</span>
+  </p>
+  <AffiliateCta>{label}</AffiliateCta>
+</div>
+
+<script>
+  const bar = document.querySelector('[data-sticky-cta]');
+  const trigger = document.querySelector('[data-sticky-trigger]');
+
+  if (bar && trigger) {
+    const observer = new IntersectionObserver(([entry]) => {
+      bar.classList.toggle('is-on', !entry.isIntersecting);
+    });
+
+    observer.observe(trigger);
+  }
+</script>

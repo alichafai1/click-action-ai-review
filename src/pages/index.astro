@@ -1,0 +1,580 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AffiliateCta from '../components/AffiliateCta.astro';
+import PromptMockup from '../components/mockups/PromptMockup.astro';
+import BrowserMockup from '../components/mockups/BrowserMockup.astro';
+import ExportMockup from '../components/mockups/ExportMockup.astro';
+import { affiliateUrl } from '../lib/affiliate';
+
+const problems = [
+  'You ask ChatGPT for a list of leads, but you still have to copy and paste them into a spreadsheet.',
+  'You want to fill out a form on a website, but the AI can’t touch the web.',
+  'You spend hours repeating the same manual clicks every single day.',
+];
+
+const features = [
+  {
+    title: 'Prompt-To-Done',
+    text: 'It doesn’t just answer; it executes.',
+    detail: 'One plain-language command starts the mission. The agent plans the steps instead of handing you a guide.',
+    icon: 'prompt',
+  },
+  {
+    title: 'Live Watch Screen',
+    text: 'See every click and keystroke in real-time.',
+    detail: 'The cloud browser stays on screen, with a checklist that ticks off as the job moves.',
+    icon: 'watch',
+  },
+  {
+    title: '50 Gig Missions',
+    text: 'Pre-built tasks for lead gen, data entry, and research.',
+    detail: 'These are ready-made jobs. Reference prices on a mission are suggestions for client work, not income you are owed.',
+    icon: 'missions',
+  },
+  {
+    title: 'Lead Finder Mode',
+    text: 'Turn a niche + city into a fully exported list of prospects.',
+    detail: 'Ask for the businesses, the city, and the fields you need. The export is the deliverable.',
+    icon: 'leads',
+  },
+  {
+    title: 'Pause & Take Over',
+    text: 'For sensitive steps (like passwords or CAPTCHAs), you can take control instantly.',
+    detail: 'It stops and waits. You sign in or solve the check, then hand the browser back. It does not bypass those walls.',
+    icon: 'pause',
+  },
+  {
+    title: 'Client-Ready Exports',
+    text: 'Download to CSV, Google Sheets, or PDF.',
+    detail: 'The point of the mission is a file you can use or send, not a chat transcript you still have to clean up.',
+    icon: 'export',
+  },
+];
+
+const pros = [
+  'It actually executes browser tasks instead of stopping at advice.',
+  'Live Watch gives you visual feedback while the mission runs.',
+  'The front-end is a one-time price, not another monthly AI subscription.',
+  'Lead Finder is built in, so a niche and a city can become an exported list.',
+];
+
+const cons = [
+  'You still need to provide a good prompt. A vague request produces a vague mission.',
+  'Some sites block automated browsers. Pause & Take Over helps on logins and CAPTCHAs, but it is not a bypass.',
+  'It is not set-and-forget. You start the job, and you have to be there for the steps that need a human.',
+];
+
+const audiences = [
+  {
+    title: 'Marketers & Agencies',
+    text: 'Scrape leads, fill out directories, and automate client research.',
+  },
+  {
+    title: 'E-commerce Owners',
+    text: 'Monitor competitor prices, gather product data, and automate outreach.',
+  },
+  {
+    title: 'Freelancers',
+    text: 'Automate the boring parts of data entry and research.',
+  },
+];
+
+const faqs = [
+  {
+    question: 'What is Click Action AI?',
+    answer:
+      'Click Action AI is a prompt-to-done AI browser agent. You type the job in plain language. It opens a live cloud browser, clicks, types, and moves through the steps, then exports a finished file.',
+  },
+  {
+    question: 'How is it different from ChatGPT?',
+    answer:
+      'ChatGPT gives you an answer or instructions. You still open the tabs, copy the data, and finish the job. Click Action AI is built to do that browser work and hand you the result.',
+  },
+  {
+    question: 'Do I need to install any software?',
+    answer:
+      'No desktop app. The vendor describes a live cloud browser and a mobile dashboard, so you run missions from the account you receive after purchase. You need an internet connection.',
+  },
+  {
+    question: 'Can it bypass CAPTCHAs?',
+    answer:
+      'No. It does not bypass CAPTCHAs or logins. When it hits one, Pause & Take Over stops the mission so you can complete that step yourself and hand the browser back.',
+  },
+  {
+    question: 'Is there a money-back guarantee?',
+    answer:
+      'Check the JVZoo checkout. Refund rules are set by the vendor and shown on the order page before you pay. This review does not promise a specific number of days, because that term has to match the live cart.',
+  },
+  {
+    question: 'How do I claim the bonuses?',
+    answer:
+      'Use a green button on this page, then follow the steps on the bonuses page. The files are emailed after the receipt is checked.',
+  },
+];
+
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'Click Action AI',
+  description:
+    'AI browser agent that opens a live browser, clicks, types, and executes tasks such as lead research and data entry.',
+  brand: {
+    '@type': 'Brand',
+    name: 'Click Action AI',
+  },
+  url: 'https://clickactionai.info',
+  image: 'https://clickactionai.info/favicon.svg',
+  offers: {
+    '@type': 'Offer',
+    price: '36.95',
+    priceCurrency: 'USD',
+    availability: 'https://schema.org/InStock',
+    url: affiliateUrl,
+  },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.7',
+    bestRating: '5',
+    worstRating: '1',
+    ratingCount: 1,
+  },
+  review: {
+    '@type': 'Review',
+    author: {
+      '@type': 'Organization',
+      name: 'Click Action AI Review',
+    },
+    reviewRating: {
+      '@type': 'Rating',
+      ratingValue: '4.7',
+      bestRating: '5',
+      worstRating: '1',
+    },
+    reviewBody:
+      'This is not just another chatbot. It is an agent that does repetitive browser tasks while you watch, pause, and export the result. It still needs a clear prompt and a human for logins and CAPTCHAs.',
+  },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
+---
+
+<BaseLayout
+  title="Click Action AI Review 2026: The AI Agent That Actually Does the Work"
+  description="Honest Click Action AI review. Discover how this AI browser agent opens a live browser, clicks, types, and executes tasks for you. Pricing, features, and bonuses."
+  schema={[productSchema, faqSchema]}
+  bodyClass="has-sticky-cta"
+>
+  <section class="hero">
+    <div class="container hero-copy">
+      <p class="eyebrow">AI browser agent · Honest review</p>
+      <h1>Click Action AI Review 2026: The AI Agent That Actually Does the Work</h1>
+      <p class="lede">
+        ChatGPT gives you answers. Click Action AI gives you results. It opens a live browser, clicks, types, and completes your tasks automatically. Here is my full breakdown of this game-changing AI Browser Agent.
+      </p>
+      <div class="video-stage" role="img" aria-label="Watch the AI Agent in Action">
+        <div class="play-button" aria-hidden="true"></div>
+        <p>Watch the AI Agent in Action</p>
+      </div>
+      <AffiliateCta id="get">Get Click Action AI + My Bonuses →</AffiliateCta>
+    </div>
+  </section>
+
+  <div class="container verdict-wrap" id="verdict">
+    <aside class="verdict" aria-label="Quick verdict">
+      <p class="rating">
+        <strong>4.7</strong>
+        <span>/5</span>
+      </p>
+      <div>
+        <h2>Quick verdict</h2>
+        <p>Best for: Marketers, Agencies, Lead Generators, and Anyone Tired of Manual Data Entry.</p>
+        <p>
+          Verdict: This is not just another chatbot. It’s an autonomous agent that saves you hours of repetitive web tasks by actually doing them.
+        </p>
+        <p>Editorial score from this review, not a pile of anonymous star ratings.</p>
+      </div>
+    </aside>
+  </div>
+
+  <section class="section" aria-labelledby="problem-title">
+    <div class="container">
+      <h2 id="problem-title">Why ChatGPT is Not Enough</h2>
+      <p class="section-copy">
+        Chat AI is useful when you need words. It drafts, explains, and outlines. Then the cursor blinks, and the browser work is still yours. Action AI is the other half: an agent that sits in a live browser and does the clicking.
+      </p>
+      <ul class="problem-list">
+        {problems.map((problem) => (
+          <li>
+            <svg class="mark mark-no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M8.5 8.5l7 7M15.5 8.5l-7 7" />
+            </svg>
+            <p>{problem}</p>
+          </li>
+        ))}
+      </ul>
+      <p class="bridge">Click Action AI bridges the gap between “knowing” and “doing”.</p>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="how-it-works" aria-labelledby="steps-title">
+    <div class="container">
+      <h2 id="steps-title">From Prompt to Done in 3 Steps</h2>
+      <p class="section-copy">
+        There is no prompt-engineering course hiding under the button. You say what finished work looks like, you watch the browser, and you take the file.
+      </p>
+      <ol class="steps">
+        <li class="step">
+          <div class="step-copy">
+            <p class="step-index">Step 1</p>
+            <h3>Type Your Prompt.</h3>
+            <p>
+              Describe the job the way you would brief a person. Name the niche, the city, and the file you want back. “Find 50 plumbers in Austin and put them in a CSV” is a complete command.
+            </p>
+          </div>
+          <PromptMockup />
+        </li>
+        <li class="step reverse">
+          <div class="step-copy">
+            <p class="step-index">Step 2</p>
+            <h3>Watch the Live Browser.</h3>
+            <p>
+              A cloud browser opens on the Live Watch screen. The checklist sits on one side and the page it is reading sits on the other. You see the clicks and the typing as they happen, instead of trusting a spinner in the dark.
+            </p>
+          </div>
+          <BrowserMockup />
+        </li>
+        <li class="step">
+          <div class="step-copy">
+            <p class="step-index">Step 3</p>
+            <h3>Export the Results.</h3>
+            <p>
+              When the mission finishes, you download a CSV, push the rows to Google Sheets, or export a PDF. That file is the result. You are not copying a chat answer cell by cell.
+            </p>
+          </div>
+          <ExportMockup />
+        </li>
+      </ol>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI + My Bonuses →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="features" aria-labelledby="features-title">
+    <div class="container">
+      <h2 id="features-title">What Makes Click Action AI Different?</h2>
+      <p class="section-copy">
+        The difference is not a smarter paragraph. It is a browser with hands. These are the parts that make the agent usable on real sites, including the moments you still need to step in.
+      </p>
+      <div class="feature-grid">
+        {features.map((feature) => (
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              {feature.icon === 'prompt' && (
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M4 7h10M4 12h7" />
+                  <path d="M14 16l3 3 5-6" />
+                </svg>
+              )}
+              {feature.icon === 'watch' && (
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <rect x="3" y="5" width="18" height="12" rx="2" />
+                  <path d="M8 21h8M12 17v4" />
+                  <circle cx="12" cy="11" r="2.2" />
+                </svg>
+              )}
+              {feature.icon === 'missions' && (
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M9 6h11M9 12h11M9 18h11" />
+                  <path d="M4 6h.01M4 12h.01M4 18h.01" />
+                </svg>
+              )}
+              {feature.icon === 'leads' && (
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <circle cx="11" cy="11" r="6" />
+                  <path d="M16 16l4 4" />
+                </svg>
+              )}
+              {feature.icon === 'pause' && (
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <rect x="6" y="5" width="4" height="14" rx="1" />
+                  <rect x="14" y="5" width="4" height="14" rx="1" />
+                </svg>
+              )}
+              {feature.icon === 'export' && (
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M12 4v10" />
+                  <path d="M8 10l4 4 4-4" />
+                  <path d="M5 20h14" />
+                </svg>
+              )}
+            </div>
+            <h3>{feature.title}</h3>
+            <p>{feature.text}</p>
+            <p>{feature.detail}</p>
+          </article>
+        ))}
+      </div>
+      <div class="related-grid">
+        <a class="related-card" href="/click-action-ai-lead-finder-mode">
+          <strong>Lead Finder</strong>
+          <span>A city and a trade, exported to CSV.</span>
+        </a>
+        <a class="related-card" href="/click-action-ai-live-browser-watch">
+          <strong>Live Browser</strong>
+          <span>Watch every click instead of trusting a spinner.</span>
+        </a>
+        <a class="related-card" href="/click-action-ai-50-gig-missions">
+          <strong>50 Gig Missions</strong>
+          <span>Pick a ready-made task and run it.</span>
+        </a>
+        <a class="related-card" href="/click-action-ai-pause-and-takeover">
+          <strong>Pause and takeover</strong>
+          <span>Step in for a login or a CAPTCHA, then resume.</span>
+        </a>
+        <a class="related-card" href="/click-action-ai-tutorial">
+          <strong>Tutorial</strong>
+          <span>From the dashboard to an exported file.</span>
+        </a>
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="pricing" aria-labelledby="pricing-title">
+    <div class="container">
+      <h2 id="pricing-title">Click Action AI Pricing: A One-Time Fee vs. Hiring a VA</h2>
+      <p class="section-copy">
+        The front-end is a one-time fee of $36.95. That is the access price for Click Action AI, not a monthly seat. A virtual assistant doing research and data entry is commonly $500 or more every month. Scrapers and research tools usually add another subscription, and you still clean the sheet.
+      </p>
+      <p class="section-copy">
+        $36.95 does not replace a person for judgment calls, logins, or accounts that block bots. It replaces the hours of repeated clicking. The cart can also offer optional upgrades after the front-end. You can stop at $36.95. Confirm the number on the JVZoo checkout, because launch prices move.
+      </p>
+      <div class="price-grid">
+        <article class="price-card">
+          <p class="price-kicker">Virtual assistant</p>
+          <strong>$500+</strong>
+          <p>Per month, for research, list building, and data entry you have to brief again next month.</p>
+        </article>
+        <article class="price-card">
+          <p class="price-kicker">Web scrapers</p>
+          <strong>Monthly</strong>
+          <p>Another subscription, and the tool still breaks when a site changes a button. You keep the cleanup.</p>
+        </article>
+        <article class="price-card is-featured">
+          <p class="price-kicker">Click Action AI</p>
+          <strong>$36.95</strong>
+          <p>One-time front-end. A live browser, Lead Finder, 50 Gig Missions, and exports. Upgrades are optional.</p>
+        </article>
+      </div>
+      <p class="coupon">Special launch price. If the checkout shows a coupon field, enter <code>CCAI6</code>.</p>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Lock in Your Access for $36.95 →</AffiliateCta>
+        <a class="text-link" href="/click-action-ai-pricing">Read the full Pricing &amp; Funnel breakdown →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="pros-title">
+    <div class="container">
+      <h2 id="pros-title">Pros and cons</h2>
+      <p class="section-copy">
+        A 4.7 is a strong score with the limits left in. The agent does the work. It does not remove you from the loop.
+      </p>
+      <div class="split-2">
+        <article class="panel panel-pro">
+          <h3>Pros</h3>
+          <ul class="check-list">
+            {pros.map((item) => (
+              <li>
+                <svg class="mark mark-yes" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M8 12.5l2.5 2.5L16 9.5" />
+                </svg>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+        <article class="panel panel-con">
+          <h3>Cons</h3>
+          <ul class="check-list">
+            {cons.map((item) => (
+              <li>
+                <svg class="mark mark-no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M8.5 8.5l7 7M15.5 8.5l-7 7" />
+                </svg>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="audience-title">
+    <div class="container">
+      <h2 id="audience-title">Who Is This For?</h2>
+      <p class="section-copy">
+        Buy it if a real slice of your week is the same search, the same form, or the same spreadsheet. Skip it if you wanted another chatbot to talk to.
+      </p>
+      <div class="audience-grid">
+        {audiences.map((audience) => (
+          <article class="audience-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <circle cx="12" cy="8" r="3" />
+                <path d="M5 19c1.4-3 3.8-4.5 7-4.5S17.6 16 19 19" />
+              </svg>
+            </div>
+            <h3>{audience.title}</h3>
+            <p>{audience.text}</p>
+          </article>
+        ))}
+      </div>
+      <div class="related-grid">
+        <a class="related-card" href="/click-action-ai-for-agencies">
+          <strong>For agencies</strong>
+          <span>Research and lead lists without adding headcount.</span>
+        </a>
+        <a class="related-card" href="/click-action-ai-for-ecommerce">
+          <strong>For e-commerce</strong>
+          <span>Competitor prices and product details in a CSV.</span>
+        </a>
+        <a class="related-card" href="/click-action-ai-for-local-businesses">
+          <strong>For local businesses</strong>
+          <span>A city and a trade, turned into a contact list.</span>
+        </a>
+        <a class="related-card" href="/click-action-ai-for-lead-generation">
+          <strong>For lead generation</strong>
+          <span>Public sites into a file you can import.</span>
+        </a>
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI + My Bonuses →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <h2 id="faq-title">FAQ</h2>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details>
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="compare-title">
+    <div class="container">
+      <h2 id="compare-title">Click Action AI compared</h2>
+      <p class="section-copy">
+        Chat tools, app connectors, virtual assistants, and scrapers each stop at a different wall. These pages show where the browser agent keeps going.
+      </p>
+      <div class="related-grid">
+        <a class="related-card" href="/click-action-ai-vs-chatgpt">
+          <strong>Vs ChatGPT</strong>
+          <span>Text and instructions, or a browser that does the job.</span>
+        </a>
+        <a class="related-card" href="/click-action-ai-vs-zapier">
+          <strong>Vs Zapier</strong>
+          <span>API workflows, or a prompt that clicks a site with no integration.</span>
+        </a>
+        <a class="related-card" href="/click-action-ai-vs-virtual-assistants">
+          <strong>Vs a virtual assistant</strong>
+          <span>$36.95 once, set next to a $500–$1,000 monthly hire.</span>
+        </a>
+        <a class="related-card" href="/click-action-ai-vs-web-scrapers">
+          <strong>Vs web scrapers</strong>
+          <span>Selectors that break, or a live browser you can pause and take over.</span>
+        </a>
+        <a class="related-card" href="/best-ai-browser-agents">
+          <strong>Best AI browser agents</strong>
+          <span>This site’s 2026 ranking of five browser agents.</span>
+        </a>
+        <a class="related-card" href="/best-lead-generation-tools">
+          <strong>Best lead gen tools</strong>
+          <span>Public lists versus monthly contact databases.</span>
+        </a>
+        <a class="related-card" href="/chatgpt-alternatives-for-automation">
+          <strong>ChatGPT alternatives</strong>
+          <span>Tools that do the work, not only the talking.</span>
+        </a>
+        <a class="related-card" href="/how-to-automate-lead-generation">
+          <strong>Automate lead generation</strong>
+          <span>Four steps from a niche and a city to a CRM file.</span>
+        </a>
+        <a class="related-card" href="/what-is-an-ai-agent">
+          <strong>What is an AI agent?</strong>
+          <span>Why an agent is different from a chatbot.</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="final-title">
+    <div class="container">
+      <div class="final-panel">
+        <h2 id="final-title">The Final Verdict</h2>
+        <p class="section-copy">
+          Click Action AI is the missing link between AI that can explain the work and an agent that will do it in a browser. Chat tools stop at the answer. This one opens the page, clicks, types, and gives you a file. It is not a silent employee, and it will not slip past every CAPTCHA. If your week disappears into repetitive web tasks, this is the one I would try. If you want another conversation, leave it.
+        </p>
+        <div class="cta-row">
+          <AffiliateCta size="lg">Get Click Action AI + Claim Your Bonuses →</AffiliateCta>
+        </div>
+        <p class="cta-row center">
+          <a class="text-link" href="/click-action-ai-bonus">Learn more about my exclusive bonuses →</a>
+          <a class="text-link" href="/click-action-ai-legit-or-scam">Is Click Action AI legit or a scam? →</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="sticky-cta" data-sticky-cta>
+    <p>
+      Click Action AI
+      <span>One-time front-end access, $36.95</span>
+    </p>
+    <AffiliateCta>Get Click Action AI →</AffiliateCta>
+  </div>
+</BaseLayout>
+
+<script>
+  const bar = document.querySelector('[data-sticky-cta]');
+  const hero = document.querySelector('.hero');
+
+  if (bar && hero) {
+    const observer = new IntersectionObserver(([entry]) => {
+      bar.classList.toggle('is-on', !entry.isIntersecting);
+    });
+
+    observer.observe(hero);
+  }
+</script>

@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AffiliateCta from '../components/AffiliateCta.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Icon from '../components/Icon.astro';
+import BrowserMockup from '../components/mockups/BrowserMockup.astro';
+import RelatedReading from '../components/RelatedReading.astro';
+import StickyBar from '../components/StickyBar.astro';
+
+const description =
+  'Click Action AI Live Browser shows every click in real time. The checklist is on one side and the page it is reading is on the other.';
+
+const points = [
+  { icon: 'list', title: 'Task list', text: 'The left side is the checklist. Steps tick off as the mission moves.' },
+  { icon: 'browser', title: 'The real page', text: 'The right side is the cloud browser. You see it type, scroll, and click.' },
+  { icon: 'pause', title: 'Stop when it drifts', text: 'If it opens the wrong kind of page, you pause. A black-box spinner cannot be corrected mid-run.' },
+];
+
+const faqs = [
+  {
+    question: 'What is the Live Browser Watch?',
+    answer:
+      'It is the screen where a Click Action AI mission runs. The task list is on the left and a live cloud browser is on the right. You see the typing, scrolling, and clicking as they happen.',
+  },
+  {
+    question: 'Why watch the agent instead of waiting for a file?',
+    answer:
+      'Most AI tools hide the work. If this agent goes off track, you can see it and stop it. Transparency is the point of the split screen.',
+  },
+  {
+    question: 'Can I look away?',
+    answer:
+      'You can, but the feature is there so you do not have to trust a blank wait. Stay for the first run of a new prompt. Later runs of the same shape need less staring.',
+  },
+  {
+    question: 'Does the live view mean it bypasses blocks?',
+    answer:
+      'No. If a site shows a CAPTCHA or a login, the run should pause so you can take over. The live view makes that moment visible. It does not hide the browser from the site.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+---
+
+<BaseLayout
+  title="Click Action AI Live Browser: Watch Your AI Agent Work"
+  description={description}
+  canonicalURL="/click-action-ai-live-browser-watch"
+  schema={faqSchema}
+  bodyClass="has-sticky-cta"
+>
+  <section class="page-hero" data-sticky-trigger>
+    <div class="container">
+      <Breadcrumbs
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Live Browser', href: '/click-action-ai-live-browser-watch' },
+        ]}
+      />
+      <p class="eyebrow">Feature</p>
+      <h1>The Live Browser Watch: See Every Click in Real-Time</h1>
+      <p class="lede">
+        Most AI is a black box. Click Action AI opens a live browser so you can see exactly what it is doing before you trust the file.
+      </p>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="split-title">
+    <div class="container">
+      <h2 id="split-title">How the split screen works</h2>
+      <p class="section-copy">
+        One side is the plan. The other side is the page. The checklist ticks off while the browser types, scrolls, and clicks. Nothing important happens off-screen.
+      </p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-copy">
+            <p class="step-index">Live Watch</p>
+            <h3>Checklist left. Browser right.</h3>
+            <p>You are not waiting on a progress bar. You are watching the same pages the agent is reading.</p>
+          </div>
+          <BrowserMockup />
+        </div>
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="why-title">
+    <div class="container">
+      <h2 id="why-title">Why the live view matters</h2>
+      <div class="aha-grid">
+        {points.map((item) => (
+          <article class="feature-card">
+            <div class="feature-icon"><Icon name={item.icon} /></div>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI + My Bonuses →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <h2 id="faq-title">Live Browser FAQ</h2>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details>
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Lock in Your Access for $36.95 →</AffiliateCta>
+      </div>
+      <RelatedReading
+        items={[
+          { href: '/', title: 'Full review', text: 'Where Live Watch sits in the whole product.' },
+          { href: '/click-action-ai-pricing', title: 'Pricing', text: 'The one-time front-end that includes the live browser.' },
+          { href: '/click-action-ai-bonus', title: 'Bonuses', text: 'Prompts worth watching the first time you run them.' },
+          { href: '/click-action-ai-pause-and-takeover', title: 'Pause and takeover', text: 'What to do when the live view hits a checkpoint.' },
+        ]}
+      />
+    </div>
+  </section>
+
+  <StickyBar note="See the clicks. Then take the file." />
+</BaseLayout>

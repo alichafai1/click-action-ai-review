@@ -1,0 +1,167 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AffiliateCta from '../components/AffiliateCta.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Icon from '../components/Icon.astro';
+import RelatedReading from '../components/RelatedReading.astro';
+import StickyBar from '../components/StickyBar.astro';
+
+const description =
+  'Click Action AI for e-commerce: send the agent to competitor pages, copy public prices and product details, and export a CSV.';
+
+const jobs = [
+  { icon: 'tag', title: 'Competitor prices', text: 'Open the product URLs you care about and record the price, shipping note, and stock line that is on the page.' },
+  { icon: 'file', title: 'Product details', text: 'Pull the public title, price, and a short description into rows instead of retyping them.' },
+  { icon: 'search', title: 'Supplier pages', text: 'Collect supplier or wholesale pages that publish a catalog, then export the fields you named.' },
+];
+
+const steps = [
+  { icon: 'cursor', title: 'Paste the URLs or the niche', text: '“Compare these five product URLs and record name, price, and whether shipping is free. CSV.” Give the links if you already have them.' },
+  { icon: 'eye', title: 'Watch the product pages', text: 'Live Watch shows which page it is reading. If a store puts up a CAPTCHA or a login, it should pause. You do not force that page.' },
+  { icon: 'download', title: 'Export the sheet', text: 'Download the CSV or send it to Google Sheets. Your pricing decision still happens in your store, not inside the agent.' },
+];
+
+const faqs = [
+  {
+    question: 'Can Click Action AI track competitor prices?',
+    answer:
+      'It can visit public product pages, read the price and offer details that are on the page, and put them in a CSV. It is a mission you run, not a silent monitor that alerts you every hour. Run it again when you need a fresh sheet.',
+  },
+  {
+    question: 'Will it copy product descriptions?',
+    answer:
+      'It can copy text that is published on the page into your export. Using another store’s words on your own listings can be a copyright and marketplace problem. Use the export for research, not as copy to paste onto your product page.',
+  },
+  {
+    question: 'What if the competitor site blocks bots?',
+    answer:
+      'The mission pauses or stops. Take over only if you are allowed to view the page as a normal shopper. Do not try to bypass a block. Some stores will simply be manual.',
+  },
+  {
+    question: 'Can it find suppliers?',
+    answer:
+      'It can search public supplier and wholesale pages and export the company name, site, and catalog fields you asked for. It cannot see private portals that require an approved account unless you pause and log in yourself.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+---
+
+<BaseLayout
+  title="Click Action AI for E-commerce: Automate Competitor Research"
+  description={description}
+  canonicalURL="/click-action-ai-for-ecommerce"
+  schema={faqSchema}
+  bodyClass="has-sticky-cta"
+>
+  <section class="page-hero" data-sticky-trigger>
+    <div class="container">
+      <Breadcrumbs
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'For e-commerce', href: '/click-action-ai-for-ecommerce' },
+        ]}
+      />
+      <p class="eyebrow">Use case</p>
+      <h1>Click Action AI for E-commerce: Automate Competitor Research</h1>
+      <p class="lede">
+        Price checks die in a pile of tabs. The agent visits the competitor pages, copies the public details you named, and exports a CSV you can sort.
+      </p>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="jobs-title">
+    <div class="container">
+      <h2 id="jobs-title">The research stores repeat</h2>
+      <div class="aha-grid">
+        {jobs.map((item) => (
+          <article class="feature-card">
+            <div class="feature-icon"><Icon name={item.icon} /></div>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="flow-title">
+    <div class="container">
+      <h2 id="flow-title">From competitor URL to a sheet</h2>
+      <div class="aha-grid">
+        {steps.map((item) => (
+          <article class="feature-card">
+            <div class="feature-icon"><Icon name={item.icon} /></div>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI + My Bonuses →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="fit-title">
+    <div class="container">
+      <h2 id="fit-title">Research, not a cloned catalog</h2>
+      <div class="split-2">
+        <article class="flag-card is-good">
+          <div class="feature-icon"><Icon name="tag" /></div>
+          <h3>A fair use of the export</h3>
+          <p>See who changed a price, who offers free shipping, and which suppliers publish a line you might stock.</p>
+        </article>
+        <article class="flag-card is-bad">
+          <div class="feature-icon"><Icon name="alert" /></div>
+          <h3>Leave it alone</h3>
+          <p>Do not paste a competitor’s description onto your listing, and do not hammer a store that has already blocked the visit.</p>
+        </article>
+      </div>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Lock in Your Access for $36.95 →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <h2 id="faq-title">E-commerce FAQ</h2>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details>
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI →</AffiliateCta>
+      </div>
+      <RelatedReading
+        items={[
+          { href: '/', title: 'Full review', text: 'Live browser, exports, and the pause feature.' },
+          { href: '/click-action-ai-pricing', title: 'Pricing', text: 'One-time access instead of another research subscription.' },
+          { href: '/click-action-ai-bonus', title: 'Bonuses', text: 'Prompts for price checks and a compliance checklist.' },
+          { href: '/click-action-ai-vs-web-scrapers', title: 'Vs scrapers', text: 'Why a selector breaks when a product page changes.' },
+        ]}
+      />
+    </div>
+  </section>
+
+  <StickyBar note="Competitor pages into a CSV" />
+</BaseLayout>

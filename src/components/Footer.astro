@@ -1,0 +1,43 @@
+---
+import Logo from './Logo.astro';
+
+const explore = [
+  { href: '/#verdict', label: 'Review' },
+  { href: '/click-action-ai-pricing', label: 'Pricing' },
+  { href: '/click-action-ai-legit-or-scam', label: 'Legit or Scam' },
+  { href: '/click-action-ai-bonus', label: 'Bonuses' },
+];
+
+const legal = [
+  { href: '/affiliate-disclosure', label: 'Affiliate disclosure' },
+  { href: '/privacy-policy', label: 'Privacy policy' },
+  { href: '/terms', label: 'Terms' },
+];
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <Logo />
+      <p>An independent review of the AI browser agent that does the browser work.</p>
+    </div>
+    <nav class="footer-col" aria-label="Explore">
+      <h2>Explore</h2>
+      {explore.map((link) => (
+        <a href={link.href}>{link.label}</a>
+      ))}
+    </nav>
+    <nav class="footer-col" aria-label="Legal">
+      <h2>Legal</h2>
+      {legal.map((link) => (
+        <a href={link.href}>{link.label}</a>
+      ))}
+    </nav>
+  </div>
+  <div class="container footer-bottom">
+    <p class="footer-disclosure">
+      Disclosure: This site is an independent review. We may earn a commission if you purchase through our links, at no extra cost to you.
+    </p>
+    <p>Click Action AI Review</p>
+  </div>
+</footer>

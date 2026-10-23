@@ -1,0 +1,200 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AffiliateCta from '../components/AffiliateCta.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Icon from '../components/Icon.astro';
+import PromptMockup from '../components/mockups/PromptMockup.astro';
+import BrowserMockup from '../components/mockups/BrowserMockup.astro';
+import PauseMockup from '../components/mockups/PauseMockup.astro';
+import ExportMockup from '../components/mockups/ExportMockup.astro';
+import RelatedReading from '../components/RelatedReading.astro';
+import StickyBar from '../components/StickyBar.astro';
+
+const description =
+  'How to use Click Action AI in 2026: log in, pick a Gig Mission or write a prompt, watch the live browser, pause if needed, and export.';
+
+const steps = [
+  {
+    name: 'Log in to the dashboard',
+    text: 'Open the Click Action AI dashboard from the access you receive after purchase and log in.',
+    icon: 'users',
+  },
+  {
+    name: 'Choose a Gig Mission or type a custom prompt',
+    text: 'Pick one of the ready-made Gig Missions, or type a custom prompt that names the niche, the place, the fields, and the file.',
+    icon: 'cursor',
+  },
+  {
+    name: 'Watch the Live Browser execute the task',
+    text: 'Stay on the Live Browser. The checklist is on one side and the page it is clicking is on the other.',
+    icon: 'eye',
+  },
+  {
+    name: 'Step in with Pause and Takeover if needed',
+    text: 'If the run hits a login, a CAPTCHA, or a payment page, it pauses. Finish that step yourself and press Resume.',
+    icon: 'pause',
+  },
+  {
+    name: 'Export your data to CSV or Google Sheets',
+    text: 'When the mission finishes, download a CSV or send the rows to Google Sheets. Check the file before you use it.',
+    icon: 'download',
+  },
+];
+
+const tips = [
+  { icon: 'file', title: 'Name the outcome', text: '“Find 30 roofers in Phoenix with name, phone, and website. CSV.” beats “get leads.”' },
+  { icon: 'list', title: 'Cap the rows', text: 'A number keeps the mission from wandering. Fifty is a task. “All of them” is not.' },
+  { icon: 'eye', title: 'Watch the first run', text: 'If the first pages are the wrong kind of site, pause and rewrite. Do not wait for a bad file.' },
+];
+
+const faqs = [
+  {
+    question: 'How do I start using Click Action AI?',
+    answer:
+      'Log in to the dashboard you receive after purchase. Choose a Gig Mission or type a custom prompt, watch the Live Browser, pause if a checkpoint appears, and export to CSV or Google Sheets.',
+  },
+  {
+    question: 'What makes a prompt work?',
+    answer:
+      'Clear prompts get better results. Include the niche, the place, the fields, and the export. A vague line produces a vague mission.',
+  },
+  {
+    question: 'Do I have to use a Gig Mission?',
+    answer:
+      'No. A Gig Mission is the fast start. A custom prompt is there when none of the 50 matches the job.',
+  },
+  {
+    question: 'What if the tutorial step hits a CAPTCHA?',
+    answer:
+      'Use Pause and Takeover. Finish the check yourself and press Resume. The agent does not bypass it.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How to Use Click Action AI',
+  description:
+    'Log in, choose a Gig Mission or write a prompt, watch the live browser, pause if needed, and export the file.',
+  step: steps.map((step, index) => ({
+    '@type': 'HowToStep',
+    position: index + 1,
+    name: step.name,
+    text: step.text,
+  })),
+};
+---
+
+<BaseLayout
+  title="How to Use Click Action AI: Step-by-Step Tutorial (2026)"
+  description={description}
+  canonicalURL="/click-action-ai-tutorial"
+  schema={[howToSchema, faqSchema]}
+  bodyClass="has-sticky-cta"
+>
+  <section class="page-hero" data-sticky-trigger>
+    <div class="container">
+      <Breadcrumbs
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Tutorial', href: '/click-action-ai-tutorial' },
+        ]}
+      />
+      <p class="eyebrow">Tutorial · 2026</p>
+      <h1>How to Use Click Action AI: From Zero to Automation</h1>
+      <p class="lede">
+        Five steps. Log in, start a mission, watch it, step in if a checkpoint appears, and take the file.
+      </p>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="steps-title">
+    <div class="container">
+      <h2 id="steps-title">The steps</h2>
+      <ol class="steps">
+        {steps.map((step, index) => (
+          <li class:list={['step', { reverse: index % 2 === 1 }]}>
+            <div class="step-copy">
+              <p class="step-index">Step {index + 1}</p>
+              <h3>{step.name}</h3>
+              <p>{step.text}</p>
+            </div>
+            {index === 1 && <PromptMockup prompt="Find 30 roofers in Phoenix with name, phone, and website. Export a CSV." />}
+            {index === 2 && <BrowserMockup />}
+            {index === 3 && <PauseMockup />}
+            {index === 4 && <ExportMockup />}
+            {index === 0 && (
+              <div class="feature-card">
+                <div class="feature-icon"><Icon name={step.icon} /></div>
+                <h3>Dashboard</h3>
+                <p>The login is in the access email after you buy. This review is not the dashboard.</p>
+              </div>
+            )}
+          </li>
+        ))}
+      </ol>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="tips-title">
+    <div class="container">
+      <h2 id="tips-title">Tips for better results</h2>
+      <p class="section-copy">Clear prompts get better results. The agent cannot guess a niche you did not name.</p>
+      <div class="aha-grid">
+        {tips.map((tip) => (
+          <article class="feature-card">
+            <div class="feature-icon"><Icon name={tip.icon} /></div>
+            <h3>{tip.title}</h3>
+            <p>{tip.text}</p>
+          </article>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI + My Bonuses →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <h2 id="faq-title">Tutorial FAQ</h2>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details>
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Lock in Your Access for $36.95 →</AffiliateCta>
+      </div>
+      <RelatedReading
+        items={[
+          { href: '/', title: 'Full review', text: 'The product behind these five steps.' },
+          { href: '/click-action-ai-pricing', title: 'Pricing', text: 'What the $36.95 front-end includes.' },
+          { href: '/click-action-ai-bonus', title: 'Bonuses', text: 'More prompts once you know the pattern.' },
+          { href: '/click-action-ai-50-gig-missions', title: '50 Gig Missions', text: 'Skip the blank prompt and pick a task.' },
+        ]}
+      />
+    </div>
+  </section>
+
+  <StickyBar note="Five steps to a file" />
+</BaseLayout>

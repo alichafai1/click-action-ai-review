@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AffiliateCta from '../components/AffiliateCta.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Icon from '../components/Icon.astro';
+import MissionMockup from '../components/mockups/MissionMockup.astro';
+import RelatedReading from '../components/RelatedReading.astro';
+import StickyBar from '../components/StickyBar.astro';
+
+const description =
+  'Click Action AI includes 50 Gig Missions: ready-made tasks such as lead lists and competitor price checks. Pick one and run it.';
+
+const examples = [
+  { icon: 'users', title: 'Find 50 real estate agents', text: 'A ready mission that collects public agent details and exports a CSV. You still review the rows.' },
+  { icon: 'tag', title: 'Monitor 5 competitor prices', text: 'It visits the pages and saves the prices to Google Sheets. Run it again when you want a fresh read.' },
+  { icon: 'list', title: 'The other 48', text: 'Research, data entry, and list jobs with the same shape. Reference prices on a mission are suggestions, not income.' },
+];
+
+const faqs = [
+  {
+    question: 'What is a Gig Mission?',
+    answer:
+      'A Gig Mission is a pre-built Click Action AI task. You pick it instead of writing a prompt from a blank box. Examples include finding 50 real estate agents and exporting a CSV, or checking five competitor prices and saving them to Google Sheets.',
+  },
+  {
+    question: 'Do I need to be a prompt engineer?',
+    answer:
+      'No. Pick a mission and run it. A custom prompt is still there when the ready-made list does not match your job. Clear details still beat a vague selection.',
+  },
+  {
+    question: 'Are there really 50 missions?',
+    answer:
+      'The product includes 50 ready-to-run Gig Missions for lead gen, research, and data entry. The names can be updated by the vendor. The point is a menu, not an empty prompt box.',
+  },
+  {
+    question: 'Do the price tags on missions mean I will earn that amount?',
+    answer:
+      'No. A reference price is a suggestion for what a client might pay for that kind of deliverable. It is not revenue the software pays you.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+---
+
+<BaseLayout
+  title="Click Action AI 50 Gig Missions: Pre-Built Tasks for Instant Results"
+  description={description}
+  canonicalURL="/click-action-ai-50-gig-missions"
+  schema={faqSchema}
+  bodyClass="has-sticky-cta"
+>
+  <section class="page-hero" data-sticky-trigger>
+    <div class="container">
+      <Breadcrumbs
+        items={[
+          { label: 'Home', href: '/' },
+          { label: '50 Gig Missions', href: '/click-action-ai-50-gig-missions' },
+        ]}
+      />
+      <p class="eyebrow">Feature</p>
+      <h1>50 Gig Missions: Don't Write Prompts, Just Pick a Task</h1>
+      <p class="lede">
+        The blank prompt box is where most people stall. Fifty ready-made missions let you pick a job and run it.
+      </p>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="what-title">
+    <div class="container">
+      <h2 id="what-title">What a Gig Mission is</h2>
+      <p class="section-copy">
+        It is a finished brief already inside the product. You choose it, the live browser runs it, and you export the file. Two you will recognize: “Find 50 real estate agents and export to CSV,” and “Monitor 5 competitor prices and save to Google Sheets.”
+      </p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-copy">
+            <p class="step-index">The menu</p>
+            <h3>Select. Don’t invent.</h3>
+            <p>The mission already names the outcome. You are not staring at an empty field wondering how to ask.</p>
+          </div>
+          <MissionMockup />
+        </div>
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="why-title">
+    <div class="container">
+      <h2 id="why-title">Why the menu matters</h2>
+      <div class="aha-grid">
+        {examples.map((item) => (
+          <article class="feature-card">
+            <div class="feature-icon"><Icon name={item.icon} /></div>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI + My Bonuses →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <h2 id="faq-title">Gig Missions FAQ</h2>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details>
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Lock in Your Access for $36.95 →</AffiliateCta>
+      </div>
+      <RelatedReading
+        items={[
+          { href: '/', title: 'Full review', text: 'All six features, including the 50 missions.' },
+          { href: '/click-action-ai-pricing', title: 'Pricing', text: 'The missions are in the $36.95 front-end.' },
+          { href: '/click-action-ai-bonus', title: 'Bonuses', text: 'Extra prompts if the menu is not your exact job.' },
+          { href: '/click-action-ai-tutorial', title: 'Tutorial', text: 'How to pick a mission and export the file.' },
+        ]}
+      />
+    </div>
+  </section>
+
+  <StickyBar note="Pick a mission. Run it." />
+</BaseLayout>

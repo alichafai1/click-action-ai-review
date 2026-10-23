@@ -1,0 +1,307 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AffiliateCta from '../components/AffiliateCta.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Icon from '../components/Icon.astro';
+import RelatedReading from '../components/RelatedReading.astro';
+import StickyBar from '../components/StickyBar.astro';
+import { affiliateUrl } from '../lib/affiliate';
+
+const description =
+  'Is the $36.95 Click Action AI fee worth it? Compare it with a VA and web scrapers, see the funnel, the math, and the CCAI6 coupon.';
+
+const included = [
+  {
+    icon: 'browser',
+    title: 'Live cloud browser',
+    text: 'The front-end opens a browser in the cloud and runs the mission there. No desktop install.',
+  },
+  {
+    icon: 'eye',
+    title: 'Live Watch',
+    text: 'You see the clicks and the checklist. The run is not a spinner with a surprise file at the end.',
+  },
+  {
+    icon: 'search',
+    title: 'Lead Finder',
+    text: 'A niche plus a city can come back as a list with the fields you asked for.',
+  },
+  {
+    icon: 'list',
+    title: '50 Gig Missions',
+    text: 'Ready-made jobs for research, lists, and data entry. Reference prices on a mission are suggestions, not income.',
+  },
+  {
+    icon: 'pause',
+    title: 'Pause and take over',
+    text: 'Logins and CAPTCHAs stop the run so you can finish that step. It does not bypass them.',
+  },
+  {
+    icon: 'download',
+    title: 'CSV, Sheets, or PDF',
+    text: 'The deliverable is a file you can use or hand to a client, not a chat transcript to clean by hand.',
+  },
+];
+
+const rows = [
+  ['Price', '$36.95 once', '$500+ every month', 'Usually another monthly bill'],
+  ['Who does the clicking', 'A live browser you can watch', 'A person you brief and manage', 'A script, until the page changes'],
+  ['When a site changes', 'It reads the page and tries another path', 'The person adapts', 'The scraper often breaks'],
+  ['Logins and CAPTCHAs', 'It pauses. You take over.', 'The person handles them', 'Most scrapers stop or get blocked'],
+  ['What you get', 'A CSV, Sheet, or PDF', 'Whatever you wrote in the brief', 'Raw rows you still have to clean'],
+  ['Best fit', 'Repeated browser work', 'Judgment, calls, and account access', 'One stable site you scrape often'],
+];
+
+const faqs = [
+  {
+    question: 'Is the $36.95 Click Action AI price a monthly fee?',
+    answer:
+      'No. $36.95 is the one-time front-end price for Click Action AI. It is not a monthly seat. The checkout can still offer optional upgrades after that, and those are separate.',
+  },
+  {
+    question: 'What do the optional upgrades cost?',
+    answer:
+      'The upgrade prices are printed on the JVZoo cart, and they can change during a launch. This page does not guess them. You can refuse every upgrade and keep the $36.95 front-end.',
+  },
+  {
+    question: 'Does the CCAI6 coupon always discount the order?',
+    answer:
+      'Only if the checkout shows a coupon field and accepts CCAI6. If the field is missing or the code is rejected, the price on the order page is the price you pay.',
+  },
+  {
+    question: 'Is Click Action AI cheaper than hiring a virtual assistant?',
+    answer:
+      'The front-end is much cheaper than a $500 month of VA time. It covers repetitive browser work. It does not replace a person for judgment, phone calls, or accounts that block bots.',
+  },
+  {
+    question: 'Can I buy only the front-end?',
+    answer:
+      'Yes. Buy the $36.95 front-end and decline the upgrades that appear afterward. Read each offer before you accept it.',
+  },
+];
+
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'Click Action AI',
+  description:
+    'AI browser agent sold as a one-time front-end. It opens a live browser, runs tasks, and exports the result.',
+  brand: { '@type': 'Brand', name: 'Click Action AI' },
+  image: 'https://clickactionai.info/favicon.svg',
+  offers: {
+    '@type': 'Offer',
+    price: '36.95',
+    priceCurrency: 'USD',
+    availability: 'https://schema.org/InStock',
+    url: affiliateUrl,
+  },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.7',
+    bestRating: '5',
+    worstRating: '1',
+    ratingCount: 1,
+  },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+---
+
+<BaseLayout
+  title="Click Action AI Pricing: Is the $36.95 One-Time Fee Worth It?"
+  description={description}
+  canonicalURL="/click-action-ai-pricing"
+  schema={[productSchema, faqSchema]}
+  bodyClass="has-sticky-cta"
+>
+  <section class="page-hero" data-sticky-trigger>
+    <div class="container">
+      <Breadcrumbs
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Pricing', href: '/click-action-ai-pricing' },
+        ]}
+      />
+      <p class="eyebrow">Pricing</p>
+      <h1>Click Action AI Pricing: Is the $36.95 One-Time Fee Worth It?</h1>
+      <p class="lede">
+        The front-end is $36.95 once. This page is that price, set next to a virtual assistant and a web scraper, plus the upgrades you are allowed to skip.
+      </p>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Lock in Your Access for $36.95 →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="included-title">
+    <div class="container">
+      <h2 id="included-title">What the $36.95 front-end includes</h2>
+      <p class="section-copy">
+        You are paying for the agent that does the browser work: a cloud browser, a screen you can watch, lead and mission tools, and an export. You are not paying for a monthly login to another chatbot.
+      </p>
+      <div class="feature-grid">
+        {included.map((item) => (
+          <article class="feature-card">
+            <div class="feature-icon">
+              <Icon name={item.icon} />
+            </div>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="compare-title">
+    <div class="container">
+      <h2 id="compare-title">Click Action AI vs a VA vs a web scraper</h2>
+      <p class="section-copy">
+        A virtual assistant doing research and data entry is commonly $500 or more every month. Scrapers are usually another subscription, and you still clean the sheet when a layout changes. $36.95 replaces the repeated clicking. It does not replace judgment.
+      </p>
+      <div class="compare-wrap">
+        <table class="compare">
+          <caption class="sr-only">
+            Price and workflow comparison of Click Action AI, a virtual assistant, and a web scraper
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col"> </th>
+              <th class="is-featured" scope="col">Click Action AI</th>
+              <th scope="col">Virtual assistant</th>
+              <th scope="col">Web scraper</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row) => (
+              <tr>
+                <th scope="row">{row[0]}</th>
+                <td class="is-featured">{row[1]}</td>
+                <td>{row[2]}</td>
+                <td>{row[3]}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Lock in Your Access for $36.95 →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="math-title">
+    <div class="container">
+      <h2 id="math-title">The Math</h2>
+      <p class="bridge">If it saves you 5 hours a week, it pays for itself in days.</p>
+      <div class="math-panel">
+        <div>
+          <p>
+            At $25 an hour, $36.95 is about an hour and a half of your time. Five saved hours in a week are worth $125 at that rate. The fee is covered before that first week of saved time is over, which is a couple of working days, not a quarter.
+          </p>
+          <p>
+            One month of a $500 virtual assistant is about thirteen times the front-end. A year of that help is $6,000. The agent does not do the whole VA job. It does the part that is opening pages, copying fields, and filling sheets.
+          </p>
+          <p>
+            This is arithmetic, not a promise. If your week is logins, CAPTCHAs, and sites that block automated browsers, the hours saved will be smaller. Read the limits on the legit page before you treat the five hours as guaranteed.
+          </p>
+        </div>
+        <div class="math-stat">
+          <strong>1.5 hrs</strong>
+          <span>$36.95 is about an hour and a half at $25 an hour.</span>
+        </div>
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="funnel-title">
+    <div class="container">
+      <h2 id="funnel-title">Front-end vs optional upgrades</h2>
+      <p class="section-copy">
+        The cart is a funnel. The first charge is the product. Anything after that is optional. Launch prices move, so the JVZoo order page is the number that counts.
+      </p>
+      <div class="flow">
+        <article class="flow-card">
+          <p class="flow-index">Step 1</p>
+          <div class="feature-icon">
+            <Icon name="tag" />
+          </div>
+          <h3>Front-end, $36.95</h3>
+          <p>The agent itself: browser, Live Watch, Lead Finder, 50 Gig Missions, and exports. This is the purchase this review is about.</p>
+        </article>
+        <article class="flow-card">
+          <p class="flow-index">Step 2</p>
+          <div class="feature-icon">
+            <Icon name="bot" />
+          </div>
+          <h3>Optional upgrades</h3>
+          <p>After the front-end, the cart may offer more. Prices are on those screens. Decline them and you still keep the agent.</p>
+        </article>
+        <article class="flow-card">
+          <p class="flow-index">Step 3</p>
+          <div class="feature-icon">
+            <Icon name="file" />
+          </div>
+          <h3>Bonuses from this site</h3>
+          <p>The swipe file and compliance checklist are mine, not a button in the vendor dashboard. You claim them by email after you buy through these links.</p>
+        </article>
+      </div>
+      <p class="coupon">Special launch price. If the checkout shows a coupon field, enter <code>CCAI6</code>.</p>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Lock in Your Access for $36.95 →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq" aria-labelledby="pricing-faq-title">
+    <div class="container">
+      <h2 id="pricing-faq-title">Pricing FAQ</h2>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details>
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI + My Bonuses →</AffiliateCta>
+      </div>
+      <RelatedReading
+        items={[
+          {
+            href: '/',
+            title: 'Full review',
+            text: 'The pillar page: how the agent works, the score, and who it is for.',
+          },
+          {
+            href: '/click-action-ai-bonus',
+            title: 'Bonuses',
+            text: 'The swipe file and compliance checklist, and how to claim them.',
+          },
+          {
+            href: '/click-action-ai-legit-or-scam',
+            title: 'Legit or scam',
+            text: 'The green flags, the red flags, and what the agent will not do.',
+          },
+        ]}
+      />
+    </div>
+  </section>
+
+  <StickyBar label="Lock in Your Access for $36.95 →" />
+</BaseLayout>

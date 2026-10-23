@@ -1,0 +1,41 @@
+---
+import Logo from './Logo.astro';
+import AffiliateCta from './AffiliateCta.astro';
+
+const links = [
+  { href: '/#verdict', label: 'Review' },
+  { href: '/click-action-ai-pricing', label: 'Pricing' },
+  { href: '/click-action-ai-legit-or-scam', label: 'Legit or Scam' },
+  { href: '/click-action-ai-bonus', label: 'Bonuses' },
+];
+---
+
+<header class="site-header">
+  <div class="container header-bar">
+    <Logo />
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu" data-nav-toggle>
+      <span></span>
+    </button>
+    <nav class="site-nav" id="site-nav" data-nav aria-label="Primary">
+      <ul class="nav-list">
+        {links.map((link) => (
+          <li>
+            <a href={link.href}>{link.label}</a>
+          </li>
+        ))}
+      </ul>
+      <AffiliateCta extraClass="header-cta">Get Click Action AI →</AffiliateCta>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector('[data-nav-toggle]');
+  const nav = document.querySelector('[data-nav]');
+
+  toggle?.addEventListener('click', () => {
+    const open = nav?.classList.toggle('is-open') ?? false;
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+</script>

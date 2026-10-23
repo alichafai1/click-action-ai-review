@@ -1,0 +1,277 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AffiliateCta from '../components/AffiliateCta.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Icon from '../components/Icon.astro';
+import RelatedReading from '../components/RelatedReading.astro';
+import StickyBar from '../components/StickyBar.astro';
+import { affiliateUrl } from '../lib/affiliate';
+
+const description =
+  'Claim the Click Action AI bonuses from this review: a 50-prompt swipe file and a web scraping compliance checklist.';
+
+const samples = [
+  {
+    label: 'Local leads',
+    text: 'Find 40 independent dentists in Tampa with the practice name, website, phone, and a contact page URL. Export a CSV.',
+  },
+  {
+    label: 'Competitor shelf',
+    text: 'Open these five competitor URLs and record the product name, current price, and whether shipping is free. Put the rows in a CSV.',
+  },
+  {
+    label: 'Directory pass',
+    text: 'Search for digital marketing agencies in Denver, open the first 30 unique websites, and list the agency name, city, and contact URL.',
+  },
+];
+
+const checklistPoints = [
+  { icon: 'shield', title: 'Permission first', text: 'Read the site terms and robots.txt before you point a mission at it.' },
+  { icon: 'pause', title: 'Stop at walls', text: 'Logins and CAPTCHAs are a pause, not a puzzle to beat.' },
+  { icon: 'alert', title: 'Personal data', text: 'Collect business contact fields you have a reason to hold. Skip private data you do not need.' },
+  { icon: 'clock', title: 'Volume', text: 'A list of 50 is a task. Hammering a site for hours is how you get blocked, and the checklist says to stop.' },
+];
+
+const steps = [
+  {
+    icon: 'cursor',
+    title: 'Buy through this site',
+    text: 'Use a green button on this site so the order can be matched to this review.',
+  },
+  {
+    icon: 'receipt',
+    title: 'Send the receipt',
+    text: 'Email the JVZoo receipt to bonuses@clickactionaireview.com. Put “Click Action AI bonuses” in the subject.',
+  },
+  {
+    icon: 'mail',
+    title: 'Get the two files',
+    text: 'I send the swipe file and the compliance checklist to that email. They are not sitting in the vendor dashboard.',
+  },
+];
+
+const faqs = [
+  {
+    question: 'Are these Click Action AI bonuses from the vendor?',
+    answer:
+      'No. The Prompt to Profit swipe file and the web scraping compliance checklist are bonuses from this review site. They are not a download button inside the vendor members area.',
+  },
+  {
+    question: 'How do I claim the bonuses?',
+    answer:
+      'Buy through a green button on this site, then email your JVZoo receipt to bonuses@clickactionaireview.com with the subject “Click Action AI bonuses”. I send the two files back to that address.',
+  },
+  {
+    question: 'What is in the Prompt to Profit swipe file?',
+    answer:
+      'Fifty copy-and-paste prompts for Click Action AI, grouped for local leads, agency research, ecommerce prices, directories, outreach lists, and data moves. The stated value of the file is $47.',
+  },
+  {
+    question: 'What is the web scraping compliance checklist?',
+    answer:
+      'A short guide for running browser tasks without breaking site rules or trying to slip past blocks. It covers terms, robots.txt, logins, CAPTCHAs, personal data, and when to stop. The stated value is $27.',
+  },
+  {
+    question: 'How fast will I get the files?',
+    answer:
+      'They are sent by email after the receipt is checked. It is not an instant download. If the receipt does not match a purchase through this site’s links, the files are not sent.',
+  },
+];
+
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'Click Action AI',
+  description:
+    'AI browser agent. Buyers who purchase through this review can claim a prompt swipe file and a compliance checklist by email.',
+  brand: { '@type': 'Brand', name: 'Click Action AI' },
+  image: 'https://clickactionai.info/favicon.svg',
+  offers: {
+    '@type': 'Offer',
+    price: '36.95',
+    priceCurrency: 'USD',
+    availability: 'https://schema.org/InStock',
+    url: affiliateUrl,
+  },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+---
+
+<BaseLayout
+  title="Click Action AI Bonus: Claim Your Automation Toolkit"
+  description={description}
+  canonicalURL="/click-action-ai-bonus"
+  schema={[productSchema, faqSchema]}
+  bodyClass="has-sticky-cta"
+>
+  <section class="page-hero" data-sticky-trigger>
+    <div class="container">
+      <Breadcrumbs
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Bonuses', href: '/click-action-ai-bonus' },
+        ]}
+      />
+      <p class="eyebrow">Bonuses from this review</p>
+      <h1>Click Action AI Bonus: Claim Your Automation Toolkit</h1>
+      <p class="lede">
+        These two files are mine. They are not inside the vendor dashboard. Buy through a button on this site, send the receipt, and I email the toolkit.
+      </p>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Get Click Action AI + Claim Your Bonuses →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="bonus-stack-title">
+    <div class="container">
+      <h2 id="bonus-stack-title">The two files in the toolkit</h2>
+      <p class="section-copy">
+        The stated values are what I price these files at for readers of this review. They are not a second charge. You get both when the receipt checks out.
+      </p>
+      <div class="bonus-grid">
+        <article class="bonus-card">
+          <div class="feature-icon">
+            <Icon name="file" />
+          </div>
+          <p class="bonus-worth">Worth $47</p>
+          <h3>Bonus 1: The “Prompt to Profit” Swipe File</h3>
+          <p>
+            Fifty prompts you can copy and paste into Click Action AI to find leads and pull public business data into a sheet. Each one names the niche, the place, the fields, and the export.
+          </p>
+          <p>
+            They are grouped for local lists, agency research, competitor prices, directories, outreach, and moving rows between web apps. A prompt is a brief. A vague line still produces a vague mission.
+          </p>
+        </article>
+        <article class="bonus-card">
+          <div class="feature-icon">
+            <Icon name="shield" />
+          </div>
+          <p class="bonus-worth">Worth $27</p>
+          <h3>Bonus 2: Web Scraping Compliance Checklist</h3>
+          <p>
+            A guide for automating browser tasks without getting blocked for the boring reason: you ignored the site’s rules. It is about staying inside the lines, not sneaking past them.
+          </p>
+          <p>
+            You will not find CAPTCHA bypasses, proxy tricks, or fingerprint spoofing in it. If a site puts up a wall, the checklist tells you to pause or stop.
+          </p>
+        </article>
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI + My Bonuses →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="samples-title">
+    <div class="container">
+      <h2 id="samples-title">Three prompts from the swipe file</h2>
+      <p class="section-copy">
+        These are the shape of the file. The other 47 stay in the document I email. Use the same pattern: who, where, which fields, which file.
+      </p>
+      <div class="prompt-list">
+        {samples.map((sample) => (
+          <article class="prompt-preview">
+            <p class="flow-index">{sample.label}</p>
+            <p>{sample.text}</p>
+          </article>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="checklist-title">
+    <div class="container">
+      <h2 id="checklist-title">What the compliance checklist covers</h2>
+      <div class="feature-grid">
+        {checklistPoints.map((point) => (
+          <article class="feature-card">
+            <div class="feature-icon">
+              <Icon name={point.icon} />
+            </div>
+            <h3>{point.title}</h3>
+            <p>{point.text}</p>
+          </article>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI + My Bonuses →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="claim-title">
+    <div class="container">
+      <h2 id="claim-title">How to claim the files</h2>
+      <div class="claim-grid">
+        {steps.map((step, index) => (
+          <article class="claim-card">
+            <p class="claim-index">Step {index + 1}</p>
+            <div class="feature-icon">
+              <Icon name={step.icon} />
+            </div>
+            <h3>{step.title}</h3>
+            <p>{step.text}</p>
+          </article>
+        ))}
+      </div>
+      <p class="section-copy">
+        The address is <a class="text-link" href="mailto:bonuses@clickactionaireview.com">bonuses@clickactionaireview.com</a>.
+        Send it after the purchase, from an email you actually check. I match the receipt to a purchase made through the links on this site.
+      </p>
+      <div class="cta-row">
+        <AffiliateCta size="lg">Get Click Action AI + Claim Your Bonuses →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq" aria-labelledby="bonus-faq-title">
+    <div class="container">
+      <h2 id="bonus-faq-title">Bonus FAQ</h2>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details>
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+      <div class="cta-row">
+        <AffiliateCta>Get Click Action AI →</AffiliateCta>
+      </div>
+      <RelatedReading
+        items={[
+          {
+            href: '/',
+            title: 'Full review',
+            text: 'How the agent works, the 4.7 score, and who should skip it.',
+          },
+          {
+            href: '/click-action-ai-pricing',
+            title: 'Pricing',
+            text: 'The $36.95 front-end, the VA comparison, and the upgrades you can decline.',
+          },
+          {
+            href: '/click-action-ai-legit-or-scam',
+            title: 'Legit or scam',
+            text: 'Whether the browser agent is real, and the two limits that stay true.',
+          },
+        ]}
+      />
+    </div>
+  </section>
+
+  <StickyBar note="Buy through this page, then email the receipt" label="Get Click Action AI + Claim Your Bonuses →" />
+</BaseLayout>
